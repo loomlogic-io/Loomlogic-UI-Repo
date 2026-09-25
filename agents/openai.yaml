@@ -1,0 +1,7 @@
+interface:
+  display_name: "LoomLogic UI"
+  short_description: "Project-aware web and native UI orchestration"
+  default_prompt: "Use $loomlogic-ui to design or improve this interface using the project's design system and the best installed UI resources."
+
+policy:
+  allow_implicit_invocation: true
