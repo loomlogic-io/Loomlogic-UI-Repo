@@ -1,0 +1,8 @@
+.ll-dashboard { background: var(--ll-background); color: var(--ll-text-primary); display: grid; font-family: system-ui, sans-serif; gap: 2rem; min-height: 100%; padding: clamp(1.5rem, 5vw, 4rem); }
+.ll-dashboard__header { align-items: start; display: flex; gap: 2rem; justify-content: space-between; }
+.ll-dashboard__header span { color: var(--ll-text-muted); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.ll-dashboard__header h1 { font-size: clamp(1.75rem, 4vw, 3rem); font-weight: 560; letter-spacing: -0.055em; margin: 0.65rem 0 0.5rem; }
+.ll-dashboard__header p { color: var(--ll-text-secondary); margin: 0; }
+.ll-dashboard__stats { border-block: 1px solid var(--ll-border-subtle); display: grid; grid-template-columns: repeat(3, 1fr); padding: 1.5rem 0; }
+.ll-dashboard__stats > * + * { border-left: 1px solid var(--ll-border-subtle); padding-left: 1.5rem; }
+@media (max-width: 620px) { .ll-dashboard__header { align-items: stretch; flex-direction: column; } .ll-dashboard__stats { gap: 1.25rem; grid-template-columns: 1fr; } .ll-dashboard__stats > * + * { border-left: 0; border-top: 1px solid var(--ll-border-subtle); padding-left: 0; padding-top: 1.25rem; } }

@@ -1,0 +1,28 @@
+{
+  "name": "loomlogic-ui",
+  "version": "0.1.0",
+  "private": true,
+  "description": "LoomLogic design-system monorepo and UI Lab",
+  "packageManager": "pnpm@12.6.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "pnpm --filter @loomlogic/ui-lab build",
+    "dev": "pnpm --filter @loomlogic/ui-lab dev",
+    "lint": "eslint apps packages registry --max-warnings=0",
+    "test": "pnpm --filter @loomlogic/ui-lab test",
+    "typecheck": "tsc -p tsconfig.check.json --noEmit",
+    "validate": "pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@typescript-eslint/eslint-plugin": "8.70.1",
+    "@typescript-eslint/parser": "8.70.1",
+    "eslint": "9.39.2",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "typescript": "5.9.3"
+  }
+}

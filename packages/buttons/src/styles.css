@@ -1,0 +1,29 @@
+.ll-button {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: var(--ll-radius-control);
+  cursor: pointer;
+  display: inline-flex;
+  font: 600 0.8125rem/1 system-ui, sans-serif;
+  gap: 0.5rem;
+  justify-content: center;
+  letter-spacing: -0.01em;
+  min-height: 2.5rem;
+  padding: 0 0.875rem;
+  transition: background var(--ll-motion-micro) var(--ll-motion-ease), border-color var(--ll-motion-micro) var(--ll-motion-ease), color var(--ll-motion-micro) var(--ll-motion-ease), transform var(--ll-motion-micro) var(--ll-motion-ease);
+}
+
+.ll-button:hover:not(:disabled) { transform: translateY(-1px); }
+.ll-button:active:not(:disabled) { transform: translateY(0); }
+.ll-button:focus-visible { outline: 2px solid var(--ll-focus); outline-offset: 2px; }
+.ll-button:disabled { cursor: not-allowed; opacity: 0.46; }
+.ll-button--primary { background: var(--ll-control); color: var(--ll-control-contrast); }
+.ll-button--secondary { background: var(--ll-surface-primary); border-color: var(--ll-border-default); color: var(--ll-text-primary); }
+.ll-button--secondary:hover:not(:disabled), .ll-button--quiet:hover:not(:disabled) { background: var(--ll-surface-secondary); }
+.ll-button--quiet { background: transparent; color: var(--ll-text-secondary); }
+.ll-button--danger { background: var(--ll-danger); color: var(--ll-control-knob); }
+.ll-button--sm { min-height: 2rem; padding-inline: 0.6875rem; }
+.ll-button--lg { font-size: 0.875rem; min-height: 3rem; padding-inline: 1.125rem; }
+.ll-button__spinner { animation: ll-spin 700ms linear infinite; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; height: 0.875rem; width: 0.875rem; }
+@keyframes ll-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .ll-button { transition-duration: 0ms; } .ll-button:hover:not(:disabled) { transform: none; } }

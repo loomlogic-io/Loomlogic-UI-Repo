@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "project": {
+    "name": "Loomlogic-UI-Repo",
+    "productType": "design-system-workbench",
+    "stack": ["React", "TypeScript", "Vite", "CSS", "pnpm workspaces"]
+  },
+  "sources": {
+    "tokens": ["packages/tokens/src/index.ts", "packages/tokens/src/styles.css"],
+    "components": ["packages/*/src"],
+    "assets": [],
+    "instructions": ["SKILL.md", "docs/architecture.md"]
+  },
+  "design": {
+    "colorMode": "light-dark",
+    "colors": {
+      "strategy": "90-95% neutral; LoomLogic blue reserved for selection, focus, status, and signature detail"
+    },
+    "typography": {},
+    "spacing": {},
+    "radius": {},
+    "shadows": {},
+    "motion": {},
+    "density": "compact-workbench"
+  },
+  "components": {
+    "installed": ["Button", "TextField", "SelectField", "Tabs", "StatusBadge", "Stat"],
+    "preferredPrimitives": ["semantic HTML", "Radix/shadcn-style APIs"],
+    "patterns": ["ReviewQueue", "OperationsDashboard"]
+  },
+  "constraints": {
+    "must": [
+      "Use registry files as catalog source of truth",
+      "Keep LL Core as the only UI kit inheritance root",
+      "Keep package approval separate from Codex skill promotion",
+      "Support complete light and dark modes and reduced motion"
+    ],
+    "avoid": [
+      "CMS, database, authentication, and drag-drop builder behavior",
+      "Pervasive blue, glass, gradients, decorative motion, and rounded-everything styling",
+      "Importing @loomlogic/labs into production by default"
+    ]
+  },
+  "decisions": [
+    {
+      "id": "v1-workbench-direction",
+      "decision": "Use a calm neutral editorial workbench with a compact package rail, centered preview canvas, and right-side property inspector.",
+      "reason": "Supports dense design-system work while preserving LoomLogic's restrained luxury-tech character."
+    },
+    {
+      "id": "native-accessible-primitives",
+      "decision": "Use semantic React primitives with shadcn-style explicit APIs and no new runtime UI dependency for V1.",
+      "reason": "The repository had no established stack; native semantics keep V1 accessible and dependency-light."
+    }
+  ],
+  "evidence": ["SKILL.md", "references/dynamic-interaction-system.md", "README.md"],
+  "generatedAt": "2026-09-26T17:43:09.700Z"
+}
