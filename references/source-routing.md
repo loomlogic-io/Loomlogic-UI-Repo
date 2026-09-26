@@ -38,7 +38,7 @@ External catalogs supply patterns, not product decisions. A result with the best
 | --- | --- |
 | Build purposeful web motion | `animate` |
 | General component polish and motion judgment | `emil-design-eng` |
-| Gestures, sheets, springs, momentum, Apple-like material/behavior | `apple-design` |
+| Gestures, sheets, springs, momentum, and fluid-interface behavior | LoomLogic Dynamic Interaction System; use `apple-design` as a physics/design-thinking specialist without importing Apple styling |
 | Framework-agnostic timelines, scroll, or complex choreography | `gsap-core` |
 | SVG morphing, staggered sequences, or light framework-independent choreography | `animejs` |
 | Mobile web/touch/PWA behavior | `mobile-native` |

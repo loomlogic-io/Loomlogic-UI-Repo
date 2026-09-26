@@ -59,11 +59,20 @@ Read only the section matching the current task. Shared source priority, adaptat
 ## Motion
 
 1. Explain the purpose: feedback, continuity, spatial orientation, attention, or delight.
-2. Check frequency. Repeated workflows demand faster and quieter motion.
-3. Reuse the existing motion stack. Choose CSS for simple transitions, Motion for React layout/gesture needs, GSAP for complex timelines/scroll, Anime.js for SVG/stagger choreography.
-4. Animate compositor-friendly properties where possible and make interactions interruptible.
-5. Define exit behavior, input modality, and reduced-motion alternative before polishing the happy path.
-6. Test on representative hardware; pause offscreen/hidden continuous effects and avoid essential information encoded only in motion.
+2. For gesture physics, shared elements, morphing, scroll-linked motion, materials, or a motion-system refactor, read `dynamic-interaction-system.md` and use its engine rules and checklist.
+3. Check frequency. Repeated workflows demand faster and quieter motion.
+4. Reuse the existing motion stack. Choose CSS for simple transitions, Motion for React layout/gesture needs, GSAP for complex timelines/scroll, Anime.js for SVG/stagger choreography.
+5. Animate compositor-friendly properties where possible and make interactions interruptible.
+6. Define exit behavior, input modality, adaptive/reduced-motion behavior, and failure/cancellation paths before polishing the happy path.
+7. Test on representative hardware; pause offscreen/hidden continuous effects and avoid essential information encoded only in motion.
+
+## Dynamic interaction audit or refactor
+
+1. Read `dynamic-interaction-system.md` and use its audit/refactor mode.
+2. Inspect representative behavior at runtime before inferring from code. Inventory the actual primitives, state owners, motion engines, gesture handlers, observers, feedback channels, and preference utilities.
+3. In audit-only work, report evidence and do not edit. When fixes are requested, restore semantics, truthful state, focus, and adaptive motion before tuning physics or adding polish.
+4. Refactor in minimal behavior-preserving slices. Keep Radix/shadcn semantics and existing public APIs; remove a dependency only after all call sites and runtime paths are proven migrated.
+5. Verify slow/fast/reversed input, keyboard and touch alternatives, route restoration, zoom/large text, reduced motion/transparency, async failure, and representative device performance.
 
 ## Design-system cleanup
 

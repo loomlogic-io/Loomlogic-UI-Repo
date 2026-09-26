@@ -1,6 +1,6 @@
 ---
 name: loomlogic-ui
-description: Orchestrate project-aware web and Expo/React Native UI design, implementation, audits, redesigns, component selection, and motion. Preserve the project's design system while routing to focused skills and vetted sources. Use for substantial UI/UX work; do not use for backend-only tasks or tiny styling edits that need no design judgment.
+description: Orchestrate project-aware web and Expo/React Native UI design, implementation, audits, redesigns, component selection, and dynamic interaction systems. Preserve the project's design system while routing to focused skills and vetted sources. Use for substantial UI/UX work; do not use for backend-only tasks or tiny styling edits that need no design judgment.
 ---
 
 # LoomLogic UI
@@ -135,6 +135,14 @@ Use at most one broad craft/review skill and only the specialists the task genui
 - Use `prototype` only when the user explicitly wants selectable variants. It must remain isolated until the user chooses.
 
 If a named skill, MCP, CLI, or site is unavailable, say so briefly and continue with available project components or another appropriate source. Do not invent search results, APIs, or component names.
+
+## LoomLogic Dynamic Interaction System
+
+When interaction behavior is central—gesture-driven controls, interruptible motion, shared-element transitions, morphing components, scroll-linked relationships, layered materials, or a motion audit—read [references/dynamic-interaction-system.md](references/dynamic-interaction-system.md). It defines the LoomLogic interaction engine, implementation rules, product patterns, checklists, and audit/refactor mode.
+
+The system adopts fluid-interface physics and design thinking without adopting Apple styling. LoomLogic's restrained brand, project tokens, product context, and established primitives remain authoritative. Preserve Radix/shadcn semantics and behavior when present; React Bits, Aceternity, Magic UI, Uiverse, and other sources may contribute a purposeful presentation pattern but never replace accessible foundations or create a collage of motion engines.
+
+Use the lightest implementation that satisfies the behavior: CSS for discrete state changes, the project's existing spring/motion stack for continuous or interruptible interactions, and no animation when motion would not improve feedback, continuity, orientation, or comprehension.
 
 ## Component-source decision tree
 

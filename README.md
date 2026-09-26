@@ -4,6 +4,8 @@ LoomLogic UI is a Codex-friendly orchestration skill for designing, building, re
 
 The skill is deliberately modular: [the entrypoint](SKILL.md) contains shared priorities and routing, while detailed workflows and platform guidance live under [`references/`](references/).
 
+Its [Dynamic Interaction System](references/dynamic-interaction-system.md) adds a coherent engine for direct manipulation, interruptible springs, velocity and momentum, spatial/shared-element continuity, morphing components, scroll-linked behavior, adaptive motion, optical typography, depth, and synchronized feedback. It includes reusable Codex rules, LoomLogic Health and Northstone patterns, and an audit/refactor mode. The system borrows fluid-interface physics and design thinking without copying Apple styling or displacing the repository's Radix/shadcn base and vetted component sources.
+
 ## Routing
 
 | Target | Guidance |
@@ -49,7 +51,7 @@ core plus the mobile guidance. If Appllama research is available, keep it to
 the normal feature budget and extract patterns rather than cloning screens.
 ```
 
-See [practical prompts](references/prompts.md) for audits, redesigns, dashboards, mobile flows, motion, and component selection.
+See [practical prompts](references/prompts.md) for audits, redesigns, dashboards, mobile flows, dynamic interactions, motion refactors, and component selection.
 
 ## Design authority
 
@@ -57,4 +59,4 @@ The order is: explicit user direction, repository instructions, product/design d
 
 ## Attribution
 
-The native-mobile and optional research guidance incorporates adapted ideas from the MIT-licensed [Appllama skills](https://github.com/Appllama/appllama-skills). See [third-party notices](THIRD_PARTY_NOTICES.md).
+The native-mobile and optional research guidance incorporates adapted ideas from the MIT-licensed [Appllama skills](https://github.com/Appllama/appllama-skills). The Dynamic Interaction System uses design-thinking and motion-physics foundations adapted from Emil Kowalski's MIT-licensed [Apple Design skill](https://github.com/emilkowalski/skills/tree/main/skills/apple-design). See [third-party notices](THIRD_PARTY_NOTICES.md).

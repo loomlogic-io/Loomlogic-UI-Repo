@@ -72,6 +72,30 @@ current motion stack, make transitions interruptible, keep frequent actions
 fast, and implement a meaningful reduced-motion mode. Do not add ambient motion.
 ```
 
+## Build a dynamic product interaction
+
+```text
+Use $loomlogic-ui and the LoomLogic Dynamic Interaction System to build this
+deal-card-to-workspace interaction. Preserve the existing Radix/shadcn
+primitives, state ownership, tokens, and motion library. Model interruption,
+back navigation, focus, loading/failure, keyboard and touch paths, and adaptive
+motion before tuning the spring. Use shared-element continuity only where the
+card and workspace represent the same deal. Do not imitate Apple styling or add
+a second motion engine.
+```
+
+## Audit and refactor interaction behavior
+
+```text
+Use $loomlogic-ui in dynamic-interaction audit/refactor mode on the recording,
+processing, and review flow. Inspect runtime behavior and code; test slow and
+fast gestures, mid-flight reversal, repeated input, keyboard/touch alternatives,
+200% zoom, reduced motion, async delay, and failure. Rank evidence-backed
+findings first. Then make minimal fixes that preserve the current primitives,
+public APIs, LoomLogic Health branding, and practitioner review boundary. Report
+before/after behavior, dependencies, verification, and anything not tested.
+```
+
 ## Component search only
 
 ```text
