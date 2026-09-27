@@ -1,0 +1,4 @@
+.ll-signature-rule { background: linear-gradient(90deg, var(--ll-loom-ice), var(--ll-loom-blue), var(--ll-loom-steel)); display: block; height: 2px; width: 2.25rem; }
+.ll-quiet-lift { transition: transform var(--ll-motion-micro) var(--ll-motion-ease), box-shadow var(--ll-motion-micro) var(--ll-motion-ease); }
+@media (hover: hover) and (pointer: fine) { .ll-quiet-lift:hover { box-shadow: var(--ll-shadow-lift); transform: translateY(-2px); } }
+@media (prefers-reduced-motion: reduce) { .ll-quiet-lift { transition: none; } .ll-quiet-lift:hover { transform: none; } }

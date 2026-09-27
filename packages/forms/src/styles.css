@@ -1,0 +1,8 @@
+.ll-field { color: var(--ll-text-primary); display: grid; gap: 0.4375rem; font-family: system-ui, sans-serif; }
+.ll-field__label { font-size: 0.75rem; font-weight: 650; }
+.ll-field__control { background: var(--ll-surface-primary); border: 1px solid var(--ll-border-default); border-radius: var(--ll-radius-control); color: var(--ll-text-primary); font: 0.875rem/1.4 system-ui, sans-serif; min-height: 2.625rem; padding: 0.625rem 0.75rem; transition: border-color var(--ll-motion-micro) var(--ll-motion-ease), box-shadow var(--ll-motion-micro) var(--ll-motion-ease); width: 100%; }
+.ll-field__control:focus { border-color: var(--ll-focus); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ll-focus) 18%, transparent); outline: none; }
+.ll-field__control[aria-invalid="true"] { border-color: var(--ll-danger-border); }
+.ll-field__hint { color: var(--ll-text-muted); font-size: 0.6875rem; }
+.ll-field__hint[data-error="true"] { color: var(--ll-danger-border); }
+.ll-field__select { appearance: auto; }

@@ -1,62 +1,93 @@
 # LoomLogic UI
 
-LoomLogic UI is a Codex-friendly orchestration skill for designing, building, reviewing, and polishing web and Expo/React Native interfaces. It keeps the repository's own design system authoritative and adds LoomLogic's calm monochrome, editorial, luxury-tech quality bar where the product belongs to the LoomLogic family.
+LoomLogic UI is a Git-backed design-system monorepo and interactive UI Lab for building, comparing, and promoting LoomLogic interface packages without turning the lab into a CMS or page builder.
 
-The skill is deliberately modular: [the entrypoint](SKILL.md) contains shared priorities and routing, while detailed workflows and platform guidance live under [`references/`](references/).
+V1 includes a package browser, kit browser, component previews, light and dark themes, desktop/tablet/mobile frames, state and motion controls, side-by-side kit comparison, lifecycle status, copyable imports and Codex prompts, composed patterns, and full-page previews.
 
-Its [Dynamic Interaction System](references/dynamic-interaction-system.md) adds a coherent engine for direct manipulation, interruptible springs, velocity and momentum, spatial/shared-element continuity, morphing components, scroll-linked behavior, adaptive motion, optical typography, depth, and synchronized feedback. It includes reusable Codex rules, LoomLogic Health and Northstone patterns, and an audit/refactor mode. The system borrows fluid-interface physics and design thinking without copying Apple styling or displacing the repository's Radix/shadcn base and vetted component sources.
+## Workspace
 
-## Routing
+```text
+apps/
+  ui-lab/                 Interactive package and kit workbench
+packages/
+  tokens/                 @loomlogic/tokens
+  core/                   @loomlogic/core
+  buttons/                @loomlogic/buttons
+  icons/                  @loomlogic/icons
+  forms/                  @loomlogic/forms
+  navigation/             @loomlogic/navigation
+  data-display/           @loomlogic/data-display
+  motion/                 @loomlogic/motion
+  effects/                @loomlogic/effects
+  patterns/               @loomlogic/patterns
+  pages/                  @loomlogic/pages
+  labs/                   @loomlogic/labs
+registry/
+  components/ kits/ patterns/ pages/
+skills/
+  loomlogic-ui/           Canonical Codex skill package
+```
 
-| Target | Guidance |
-| --- | --- |
-| Web | LoomLogic UI core plus the repository's web conventions and accessible Radix/shadcn-style primitives when present |
-| Expo / React Native | LoomLogic UI core plus the dedicated native-mobile reference |
-| Expo / React Native with Appllama MCP available | The same build path, with optional pre-build reference research |
+The original root `SKILL.md`, `references/`, and `agents/` remain available for existing installer compatibility. The monorepo copy lives at `skills/loomlogic-ui/` so UI families and Codex guidance can evolve as distinct artifacts.
 
-Appllama is optional and research-only. The skill works without its MCP, and its absence must never block design or implementation.
+## Start the lab
 
-## Mobile coverage
+Requires Node.js 22 or newer and pnpm 12.
 
-The native path covers Apple HIG and platform conventions, semantic colors, Dynamic Type and accessibility, native controls, navigation and back semantics, gestures and Reanimated, perceived performance, release-build profiling, and simulator/device visual QA. It keeps the existing LoomLogic brand direction rather than replacing it with an external app's visual language.
+```bash
+corepack enable
+pnpm install
+pnpm dev
+```
 
-Reference research is intentionally bounded:
+Open the local URL printed by Vite. The lab reads its catalog from `registry/`; there is no authentication, database, CMS, or drag-and-drop editing layer.
 
-- normal feature: 3–5 apps and 5–10 relevant screens;
-- major redesign: 5–8 apps and 10–20 screens;
-- 20–30+ screens only for an explicit deep competitive UX audit.
+## Validate
 
-Research extracts patterns and interaction grammar. It never authorizes cloning screens, pixels, copy, artwork, or trade dress.
+```bash
+pnpm validate
+```
 
-## Install
+This runs lint, TypeScript checks, registry tests, and a production build.
 
-From a project root, install the skill with the agent-skills CLI:
+## Design model
+
+- Packages are technical distribution units with explicit imports.
+- Kits are visual or behavioral families assembled from packages.
+- `LL Core` is the base kit. Derived UI kits extend it directly and never form deep inheritance chains.
+- Every app selects a default UI, motion, and icon kit and starts with `allowExperimental: false`.
+- Third-party-derived and speculative work lives in `@loomlogic/labs` until promoted.
+- Package approval and Codex-skill recommendation are separate review decisions.
+
+Read the detailed guides:
+
+- [Architecture](docs/architecture.md)
+- [Adding a component](docs/adding-a-component.md)
+- [Promotion flow](docs/promotion-flow.md)
+- [Application configuration](docs/app-config.md)
+- [Consuming packages](docs/consuming-packages.md)
+
+## LoomLogic UI skill
+
+The repository continues to include the LoomLogic UI Codex skill for designing, building, reviewing, and polishing web and Expo/React Native interfaces. It keeps each repository's design system authoritative and adds LoomLogic's calm monochrome, editorial, luxury-tech quality bar where the product belongs to the LoomLogic family.
+
+The skill's [Dynamic Interaction System](skills/loomlogic-ui/references/dynamic-interaction-system.md) covers direct manipulation, interruptible springs, spatial/shared-element continuity, morphing components, scroll-linked behavior, adaptive motion, optical typography, depth, and synchronized feedback without displacing accessible Radix/shadcn-style foundations.
+
+Install it with the agent-skills CLI:
 
 ```bash
 npx skills@latest add loomlogic-io/Loomlogic-UI-Repo --skill loomlogic-ui
 ```
 
-Or copy this repository into your agent's supported skills directory under the `loomlogic-ui` name. For Codex, a user-wide installation normally lives under `~/.codex/skills/loomlogic-ui/`.
-
-## Use
+Example:
 
 ```text
 Use $loomlogic-ui to implement this settings page. Preserve the repository's
 design system, components, APIs, and accessibility behavior.
 ```
 
-```text
-Use $loomlogic-ui to design this Expo onboarding flow. Apply the LoomLogic
-core plus the mobile guidance. If Appllama research is available, keep it to
-the normal feature budget and extract patterns rather than cloning screens.
-```
+Appllama research remains optional and research-only. See the [skill prompts](skills/loomlogic-ui/references/prompts.md), [mobile guidance](skills/loomlogic-ui/references/mobile-expo-react-native.md), and [third-party notices](skills/loomlogic-ui/THIRD_PARTY_NOTICES.md).
 
-See [practical prompts](references/prompts.md) for audits, redesigns, dashboards, mobile flows, dynamic interactions, motion refactors, and component selection.
+## V1 boundaries
 
-## Design authority
-
-The order is: explicit user direction, repository instructions, product/design documentation and tokens, existing components and framework conventions, then specialist skills and external inspiration. External catalogs are raw material, not a second design system.
-
-## Attribution
-
-The native-mobile and optional research guidance incorporates adapted ideas from the MIT-licensed [Appllama skills](https://github.com/Appllama/appllama-skills). The Dynamic Interaction System uses design-thinking and motion-physics foundations adapted from Emil Kowalski's MIT-licensed [Apple Design skill](https://github.com/emilkowalski/skills/tree/main/skills/apple-design). See [third-party notices](THIRD_PARTY_NOTICES.md).
+V1 intentionally excludes authentication, a database, a CMS, and a drag-and-drop builder. Packages are private and are not published by this repository workflow. Publishing, merging, or promoting recommendations to the Codex skill requires explicit approval.

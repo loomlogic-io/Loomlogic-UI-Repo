@@ -1,0 +1,58 @@
+import type { KitRecord } from "../schema";
+
+export const kits: KitRecord[] = [
+  {
+    id: "ll-core",
+    name: "LL Core",
+    type: "ui",
+    description: "Canonical neutral base: precise, accessible, restrained, and production-ready.",
+    inheritsFrom: null,
+    lifecycle: "Approved",
+    packageNames: ["@loomlogic/tokens", "@loomlogic/core", "@loomlogic/buttons", "@loomlogic/forms", "@loomlogic/navigation", "@loomlogic/data-display"],
+  },
+  {
+    id: "ll-dynamic",
+    name: "LL Dynamic",
+    type: "ui",
+    description: "Adds purposeful continuity and expressive interaction without replacing LL Core semantics.",
+    inheritsFrom: "ll-core",
+    lifecycle: "Candidate",
+    packageNames: ["@loomlogic/motion", "@loomlogic/effects"],
+  },
+  {
+    id: "ll-editorial",
+    name: "LL Editorial",
+    type: "ui",
+    description: "A spacious content-first expression for narrative and marketing surfaces.",
+    inheritsFrom: "ll-core",
+    lifecycle: "Shortlisted",
+    packageNames: ["@loomlogic/patterns", "@loomlogic/pages"],
+  },
+  {
+    id: "ll-glass",
+    name: "LL Glass",
+    type: "ui",
+    description: "A tightly bounded material study for floating context, never a default surface treatment.",
+    inheritsFrom: "ll-core",
+    lifecycle: "Experimental",
+    packageNames: ["@loomlogic/labs"],
+  },
+  {
+    id: "ll-motion-core",
+    name: "LL Motion Core",
+    type: "motion",
+    description: "Quiet micro-interactions for feedback and state continuity.",
+    inheritsFrom: "ll-core",
+    lifecycle: "Approved",
+    packageNames: ["@loomlogic/motion"],
+  },
+  {
+    id: "ll-icons-core",
+    name: "LL Icons Core",
+    type: "icons",
+    description: "Fine-stroke interface symbols with consistent geometry.",
+    inheritsFrom: "ll-core",
+    lifecycle: "Candidate",
+    packageNames: ["@loomlogic/icons"],
+  },
+];
