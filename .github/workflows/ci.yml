@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Validate skill package
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+
+          const skill = fs.readFileSync('SKILL.md', 'utf8');
+          const frontmatter = skill.match(/^---\n([\s\S]*?)\n---\n/);
+          if (!frontmatter) throw new Error('SKILL.md is missing YAML frontmatter');
+          if (!/^name:\s*loomlogic-ui\s*$/m.test(frontmatter[1])) {
+            throw new Error('SKILL.md must declare name: loomlogic-ui');
+          }
+          if (!/^description:\s*\S+/m.test(frontmatter[1])) {
+            throw new Error('SKILL.md must declare a non-empty description');
+          }
+
+          const references = [...skill.matchAll(/\]\((references\/[^)]+)\)/g)]
+            .map((match) => match[1]);
+          for (const reference of new Set(references)) {
+            if (!fs.existsSync(reference)) throw new Error(`Missing reference: ${reference}`);
+          }
+
+          for (const required of ['agents/openai.yaml', 'THIRD_PARTY_NOTICES.md']) {
+            if (!fs.existsSync(required)) throw new Error(`Missing required package file: ${required}`);
+          }
+
+          console.log(`Validated LoomLogic UI and ${new Set(references).size} linked references.`);
+          NODE
+
+      - name: Check whitespace errors
+        run: git diff --check HEAD^
