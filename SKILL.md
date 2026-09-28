@@ -1,6 +1,6 @@
 ---
 name: loomlogic-ui
-description: Orchestrate project-aware web and Expo/React Native UI design, implementation, audits, redesigns, component selection, and dynamic interaction systems. Preserve the project's design system while routing to focused skills and vetted sources. Use for substantial UI/UX work; do not use for backend-only tasks or tiny styling edits that need no design judgment.
+description: Orchestrate project-aware Web, Expo/React Native, and native Apple UI design, implementation, audits, redesigns, component selection, and dynamic interaction systems. Preserve the project's design system while routing to focused skills and first-party platform guidance. Use for substantial UI/UX work; do not use for backend-only tasks or tiny styling edits that need no design judgment.
 ---
 
 # LoomLogic UI
@@ -16,9 +16,10 @@ Resolve conflicts in this order:
 3. The project's `DESIGN.md`, `PRODUCT.md`, `.21st/DESIGN.md`, `.21st/design.json`, theme files, tokens, and brand assets.
 4. Existing components, APIs, framework conventions, dependency policy, and nearby product UI.
 5. Product requirements, real content, and actual interaction states.
-6. Installed specialist design skills.
-7. External component catalogs and inspiration sources.
-8. Generic design conventions.
+6. Official platform guidance and first-party framework documentation for the target platform.
+7. Installed specialist design skills.
+8. External component catalogs and inspiration sources.
+9. Generic design conventions.
 
 Existing project evidence always beats a catalog's defaults.
 
@@ -32,9 +33,10 @@ Identify the target platform before choosing specialists or implementation patte
 
 - **Web:** use the LoomLogic UI core, the repository's web stack, and the web routes below. Keep lower-level interactive behavior on established accessible primitives, including the project's Radix/shadcn-style primitives when present; preserve semantic HTML, keyboard operation, focus management, and ARIA behavior.
 - **Expo / React Native:** use the LoomLogic UI core plus [references/mobile-expo-react-native.md](references/mobile-expo-react-native.md). Native platform conventions refine implementation behavior; they do not replace the product's brand, tokens, content hierarchy, or LoomLogic's visual direction.
+- **Native Apple:** use the LoomLogic UI core plus the [Native Apple reference index](references/apple/README.md) for SwiftUI, UIKit, AppKit, and Mac Catalyst work. Select the iOS, iPadOS, or macOS adaptation profile before choosing structure or controls; iPadOS is a distinct, resizable, multi-input target rather than a scaled iPhone layout. Prefer standard framework behavior and current official Apple guidance while keeping the product's content layer and LoomLogic character intact.
 - **Optional mobile reference research:** if an Appllama MCP is already available and research would improve the task, read [references/appllama-research.md](references/appllama-research.md) before building. The MCP is research-only and never required. Do not delay or block implementation when it is absent.
 
-For mixed web/native repositories, route each surface independently. Do not import web component libraries into React Native or force mobile-native conventions onto desktop web.
+For mixed-platform repositories, route each surface independently. Do not import web component libraries into React Native or native Apple targets, force mobile conventions onto desktop web or macOS, or flatten iPhone, iPad, and Mac into one layout. Share product models and tokens where useful; adapt navigation, commands, presentation, density, windows, and input to each platform.
 
 ## LoomLogic brand system
 
@@ -136,6 +138,7 @@ Use at most one broad craft/review skill and only the specialists the task genui
 - Use `pick-ui-library` when the task is dependency selection rather than visual inspiration. Respect its explicit-invocation policy.
 - Use `animate`, `emil-design-eng`, `apple-design`, `gsap-core`, or `animejs` only when motion is central and the selected tool matches the interaction. Use `mobile-native` for touch/mobile-web behavior. Use `review-animations`, `improve-animations`, or `find-animation-opportunities` for their stated read-only review modes.
 - For Expo/React Native work, follow the mobile reference first; use `animate-expo` when motion implementation needs a specialist. Web catalogs are visual references only unless their patterns can be rebuilt with native primitives.
+- For native Apple work, follow the Apple reference index and [references/apple/platform-adaptation.md](references/apple/platform-adaptation.md) before selecting implementation patterns. Use current Apple HIG and framework documentation as the platform authority. Web catalogs and Expo patterns may inform product intent, but never supply production controls or platform behavior. Use `apple-design` only as an optional motion/physics lens; it does not replace Apple's current guidance or authorize copying Apple styling.
 - Use `prototype` only when the user explicitly wants selectable variants. It must remain isolated until the user chooses.
 
 If a named skill, MCP, CLI, or site is unavailable, say so briefly and continue with available project components or another appropriate source. Do not invent search results, APIs, or component names.
@@ -187,6 +190,8 @@ External code is raw material. Before it enters the project:
 
 For React/TypeScript/Tailwind projects specifically: keep components typed, expose intentional props, use the existing class composition/variant utility, preserve server/client boundaries, and avoid turning a one-off visual into a new global primitive without evidence it will be reused.
 
+For native Apple projects specifically: preserve the existing SwiftUI/UIKit/AppKit architecture, scene and document model, deployment targets, availability policy, data flow, and public APIs. Prefer semantic system colors, text styles, SF Symbols, standard controls, platform presentations, commands, focus, and accessibility semantics. Treat compact and regular space as runtime conditions rather than device names; preserve task continuity as windows resize or scenes multiply. Add availability guards and fallbacks when newer APIs exceed the deployment target, and do not add third-party UI dependencies when Apple frameworks or the current project already solve the need.
+
 ## Quality gates
 
 Reject or rewrite results that exhibit:
@@ -199,15 +204,18 @@ Reject or rewrite results that exhibit:
 - unnecessary dependencies, duplicated primitives, large runtime effects for minor decoration, or hydration/client-boundary regressions;
 - semantic regressions, div-based controls, poor focus behavior, inaccessible contrast, or mobile-hostile targets;
 - fake product data, lorem ipsum, missing states, or inconsistent UX copy;
-- “vibe-coded” inconsistency: locally attractive pieces that do not form a coherent system.
+- “vibe-coded” inconsistency: locally attractive pieces that do not form a coherent system;
+- stretched-iPhone iPad layouts, touch-only iPad behavior, single-size assumptions, or Mac interfaces that omit menu commands, keyboard access, resizable windows, and active/inactive state;
+- hand-built replicas of standard Apple controls, indiscriminate Liquid Glass, branded system chrome that weakens platform familiarity, or copied Apple/third-party assets;
+- unguarded SDK-only APIs, hardcoded safe-area/window metrics, device-name layout branching where available space should drive adaptation, or native UI declared complete from previews alone.
 
 Gradients, glow, glass, and strong motion are not forbidden; they need a clear product role, project fit, and a restrained budget.
 
 ## Workflows and verification
 
-Read [references/workflows.md](references/workflows.md) for audit, redesign, new feature UI, mobile/Expo, landing page, dashboard, motion, design-system cleanup, and component-selection workflows. Read only the relevant workflow.
+Read [references/workflows.md](references/workflows.md) for audit, redesign, new feature UI, Expo/React Native, native Apple, landing page, dashboard, motion, design-system cleanup, and component-selection workflows. Read only the relevant workflow.
 
-Verify in proportion to the change: typecheck/lint/tests, deterministic design review when available, and runtime inspection at representative desktop/mobile sizes. Exercise keyboard navigation and interaction states. Check the console and confirm reduced-motion behavior for motion-heavy work.
+Verify in proportion to the change: typecheck/lint/tests, deterministic design review when available, and runtime inspection at representative desktop/mobile sizes. Exercise keyboard navigation and interaction states. Check the console and confirm reduced-motion behavior for motion-heavy work. For native Apple work, use [references/apple/verification.md](references/apple/verification.md): build the supported schemes, run relevant tests, inspect representative devices and resizable windows, and test the platform accessibility and input modes that the change affects.
 
 Report the direction chosen, project primitives reused, external sources adapted, dependencies changed, meaningful tradeoffs, files changed, and verification performed. Clearly separate proven defects from subjective recommendations.
 

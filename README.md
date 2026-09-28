@@ -1,6 +1,6 @@
 # LoomLogic UI
 
-LoomLogic UI is a Codex-friendly orchestration skill for designing, building, reviewing, and polishing web and Expo/React Native interfaces. It keeps the repository's own design system authoritative and adds LoomLogic's calm monochrome, editorial, luxury-tech quality bar where the product belongs to the LoomLogic family.
+LoomLogic UI is a Codex-friendly orchestration skill for designing, building, reviewing, and polishing Web, Expo/React Native, and native Apple interfaces. It keeps the repository's own design system authoritative and adds LoomLogic's calm monochrome, editorial, luxury-tech quality bar where the product belongs to the LoomLogic family.
 
 The skill is deliberately modular: [the entrypoint](SKILL.md) contains shared priorities and routing, while detailed workflows and platform guidance live under [`references/`](references/).
 
@@ -13,12 +13,14 @@ Its [Dynamic Interaction System](references/dynamic-interaction-system.md) adds 
 | Web | LoomLogic UI core plus the repository's web conventions and accessible Radix/shadcn-style primitives when present |
 | Expo / React Native | LoomLogic UI core plus the dedicated native-mobile reference |
 | Expo / React Native with Appllama MCP available | The same build path, with optional pre-build reference research |
+| Native Apple | LoomLogic UI core plus the dedicated `references/apple/` layer for SwiftUI, UIKit, AppKit, and Mac Catalyst |
+| iPadOS | Its own resizable, multi-input, multiwindow adaptation profile—not a scaled iPhone layout |
 
 Appllama is optional and research-only. The skill works without its MCP, and its absence must never block design or implementation.
 
-## Mobile coverage
+## Expo / React Native coverage
 
-The native path covers Apple HIG and platform conventions, semantic colors, Dynamic Type and accessibility, native controls, navigation and back semantics, gestures and Reanimated, perceived performance, release-build profiling, and simulator/device visual QA. It keeps the existing LoomLogic brand direction rather than replacing it with an external app's visual language.
+The Expo / React Native path covers Apple HIG and Android platform conventions, semantic colors, Dynamic Type and accessibility, native controls, navigation and back semantics, gestures and Reanimated, perceived performance, release-build profiling, and simulator/device visual QA. It keeps the existing LoomLogic brand direction rather than replacing it with an external app's visual language.
 
 Reference research is intentionally bounded:
 
@@ -27,6 +29,14 @@ Reference research is intentionally bounded:
 - 20–30+ screens only for an explicit deep competitive UX audit.
 
 Research extracts patterns and interaction grammar. It never authorizes cloning screens, pixels, copy, artwork, or trade dress.
+
+## Native Apple coverage
+
+The [Native Apple reference layer](references/apple/) makes Apple platforms a full target beside Web and Expo/React Native. It covers separate iOS, iPadOS, and macOS profiles; cross-platform adaptation; navigation and presentation; windows and multitasking; menus and commands; touch, keyboard, pointer, focus, gestures, and drag and drop; Liquid Glass and standard materials; typography, semantic color, and SF Symbols; accessibility; interface writing and feedback; loading and progress; localization and right-to-left layouts; app icons and Icon Composer; official resources; and runtime verification.
+
+Native Apple guidance separates platform chrome from branded content. Standard Apple navigation, controls, commands, presentations, materials, focus, and accessibility behavior remain familiar, while LoomLogic identity stays strong in hierarchy, content, data visualization, product interactions, typography where appropriate, and restrained brand accents. The existing Dynamic Interaction System remains the motion and interaction-quality layer.
+
+The repository links to current official Apple sources instead of copying Apple UI kits, templates, SF Symbols, Icon Composer output, or other proprietary assets. Date-sensitive work should recheck the live HIG, framework documentation, SDK availability, and Apple Design Resources.
 
 ## Install
 
@@ -63,7 +73,13 @@ core plus the mobile guidance. If Appllama research is available, keep it to
 the normal feature budget and extract patterns rather than cloning screens.
 ```
 
-See [practical prompts](references/prompts.md) for audits, redesigns, dashboards, mobile flows, dynamic interactions, motion refactors, and component selection.
+```text
+Use $loomlogic-ui to build this native Apple feature for iPhone, iPad, and Mac.
+Preserve the project's architecture and brand, apply each platform profile,
+and verify resizable windows, input modes, commands, accessibility, and states.
+```
+
+See [practical prompts](references/prompts.md) for audits, redesigns, dashboards, mobile flows, native Apple work, dynamic interactions, motion refactors, and component selection.
 
 ## Design authority
 

@@ -63,6 +63,44 @@ available, research only the relevant pattern within the normal feature budget;
 extract interaction patterns rather than copying a competitor's screen.
 ```
 
+## Native Apple feature
+
+```text
+Use $loomlogic-ui to implement this feature in the existing SwiftUI app for
+iPhone, iPad, and Mac. Read the Native Apple index and select each platform's
+adaptation profile before coding. Preserve the current scene/data architecture,
+deployment targets, product tokens, and LoomLogic content identity. Use native
+navigation, presentations, commands, semantic colors, text styles, SF Symbols,
+accessibility, and input behavior. Treat iPadOS as a resizable, multi-input,
+multiwindow target and macOS as a keyboard-first windowed environment. Verify
+the affected schemes, sizes, windows, inputs, appearances, and accessibility
+settings; report anything not tested.
+```
+
+## iPadOS adaptation audit
+
+```text
+Use $loomlogic-ui to audit this iPhone-first app's iPadOS experience without
+changing code yet. Inspect compact and regular window sizes, full-screen and
+windowed multitasking, sidebar/split-view adaptation, keyboard and pointer use,
+drag and drop, menu commands, multiple windows, sheets/popovers, large text,
+VoiceOver, and state restoration. Separate proven defects from optional product
+enhancements and do not recommend a stretched phone layout or a Mac imitation.
+```
+
+## macOS workflow
+
+```text
+Use $loomlogic-ui to redesign this macOS document workspace while preserving
+the existing AppKit/SwiftUI architecture and LoomLogic brand. Start with window
+roles, sidebar/content/inspector structure, menu-bar command coverage, toolbar
+priorities, keyboard shortcuts, selection/focus, drag and drop, undo, active and
+inactive states, and accessibility. Keep Liquid Glass in the functional control
+layer, use ordinary content surfaces for the workspace, and verify resizing,
+multiple windows, menus, full keyboard access, VoiceOver, contrast, and reduced
+motion/transparency.
+```
+
 ## Motion pass
 
 ```text

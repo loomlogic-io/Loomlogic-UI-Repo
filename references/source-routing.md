@@ -19,6 +19,21 @@ Do not stack `21st-ui-build`, `impeccable`, and `design-taste-frontend` by defau
 
 For Expo/React Native tasks, route through `mobile-expo-react-native.md` before choosing specialists. Use `animate-expo` for native motion implementation when needed. Treat web catalogs as inspiration only; do not import DOM, CSS, Radix, or shadcn components into React Native.
 
+For native Apple tasks, route through `apple/README.md` and the relevant iOS, iPadOS, or macOS profile before choosing specialists. Apple Human Interface Guidelines and first-party SwiftUI, UIKit, AppKit, Xcode, and Accessibility documentation are the platform authority. Existing project architecture and deployment targets remain authoritative for implementation. Treat web catalogs, Expo patterns, screenshots, and third-party app research as product inspiration only; do not translate them literally into native controls or behavior.
+
+## Native Apple sources
+
+| Need | Primary route | Boundary |
+| --- | --- | --- |
+| Platform behavior and components | Current Apple HIG topic linked from `apple/official-resources.md` | Summarize and apply; do not copy Apple artwork, templates, or proprietary assets into the skill |
+| SwiftUI implementation | Current SwiftUI documentation and the project's established scene/data-flow architecture | Respect deployment targets and availability; don't rewrite UIKit/AppKit code merely to prefer SwiftUI |
+| UIKit or AppKit implementation | Current framework documentation and existing project patterns | Preserve lifecycle, responder chain, focus, menu validation, and accessibility behavior |
+| iPad adaptation | `apple/ipados.md`, layout, windows, multitasking, input, and menu guidance | iPadOS is not a stretched iPhone or reduced Mac |
+| Liquid Glass and materials | `apple/visual-system.md` plus current Materials HIG and framework adoption guidance | Use for the functional navigation/control layer; don't turn the content layer into glassmorphism |
+| Symbols and app icons | Current SF Symbols, App icons, Icon Composer, and Apple Design Resources pages | Use tools and references under Apple's terms; don't vendor their resource files into this repository |
+| Motion and direct manipulation | Native framework APIs plus the Dynamic Interaction System | `apple-design` may refine physics thinking, but it isn't the source of current platform rules |
+| Verification | `apple/verification.md`, Xcode, Accessibility Inspector, Simulator, and physical devices | Previews and screenshots alone are not runtime proof |
+
 ## Component and inspiration sources
 
 | Source | Best fit | Integration cautions |
@@ -43,6 +58,7 @@ External catalogs supply patterns, not product decisions. A result with the best
 | SVG morphing, staggered sequences, or light framework-independent choreography | `animejs` |
 | Mobile web/touch/PWA behavior | `mobile-native` |
 | React Native/Expo motion | `animate-expo` |
+| Native Apple motion | SwiftUI/UIKit/AppKit APIs plus the LoomLogic Dynamic Interaction System; optionally `apple-design` for motion judgment |
 | Name an unknown effect | `animation-vocabulary` |
 | Find missing motion without implementing | `find-animation-opportunities` |
 | Audit a motion system and plan fixes | `improve-animations` |
