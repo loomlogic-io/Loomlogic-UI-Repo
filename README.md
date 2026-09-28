@@ -30,13 +30,25 @@ Research extracts patterns and interaction grammar. It never authorizes cloning 
 
 ## Install
 
-From a project root, install the skill with the agent-skills CLI:
+Install one user-wide canonical copy with the agent-skills CLI:
 
 ```bash
-npx skills@latest add loomlogic-io/Loomlogic-UI-Repo --skill loomlogic-ui
+npx skills@latest add loomlogic-io/Loomlogic-UI-Repo --skill loomlogic-ui --global --yes
 ```
 
-Or copy this repository into your agent's supported skills directory under the `loomlogic-ui` name. For Codex, a user-wide installation normally lives under `~/.codex/skills/loomlogic-ui/`.
+Update that copy with:
+
+```bash
+npx skills@latest update loomlogic-ui --global --yes
+```
+
+Do not install another copy inside each product repository. The CLI's global universal installation normally lives at `~/.agents/skills/loomlogic-ui/` and can be linked to supported agents. Agent-specific global directories remain supported when the CLI selects them.
+
+## Project-specific configuration
+
+Keep product-specific direction in `.loomlogic-ui/overrides.md` at the repository or package root. Use the [project override template](references/project-override-template.md) to point at the project's authoritative tokens, fonts, color roles, component registry/primitives, motion intensity, preferred sources, exceptions, and verification commands. `LOOMLOGIC_UI.md` remains supported for existing repositories.
+
+The skill discovers these files automatically and then reads the named theme/component sources. The override narrows the global skill for one project; it must not contain a forked copy of `SKILL.md` or duplicate large token tables.
 
 ## Use
 
