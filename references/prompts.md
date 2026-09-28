@@ -105,9 +105,11 @@ motion/transparency.
 
 ```text
 Use $loomlogic-ui to improve motion in the command palette and side panel. First
-identify what motion should communicate and how often users see it. Reuse the
-current motion stack, make transitions interruptible, keep frequent actions
-fast, and implement a meaningful reduced-motion mode. Do not add ambient motion.
+identify what motion should communicate and how often users see it. Apply the
+motion-engine policy and shared feedback/quiet/spatial/physical/expressive
+vocabulary, keep one state owner and one engine per interaction, make transitions
+interruptible, and implement a meaningful reduced-motion mode. Do not add ambient
+motion.
 ```
 
 ## Build a dynamic product interaction
@@ -115,11 +117,12 @@ fast, and implement a meaningful reduced-motion mode. Do not add ambient motion.
 ```text
 Use $loomlogic-ui and the LoomLogic Dynamic Interaction System to build this
 deal-card-to-workspace interaction. Preserve the existing Radix/shadcn
-primitives, state ownership, tokens, and motion library. Model interruption,
+primitives and canonical state ownership. Select the runtime from the motion-engine
+policy and use the shared motion tokens. Model interruption,
 back navigation, focus, loading/failure, keyboard and touch paths, and adaptive
 motion before tuning the spring. Use shared-element continuity only where the
-card and workspace represent the same deal. Do not imitate Apple styling or add
-a second motion engine.
+card and workspace represent the same deal. Do not imitate Apple styling or let
+a second motion engine co-own the interaction.
 ```
 
 ## Audit and refactor interaction behavior

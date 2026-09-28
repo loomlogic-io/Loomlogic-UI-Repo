@@ -2,6 +2,8 @@
 
 Read this reference when building or reviewing gesture-driven UI, motion infrastructure, shared-element transitions, morphing components, scroll-linked behavior, material/depth systems, or product interaction patterns. For an ordinary color, spacing, or layout change, the core skill is enough.
 
+Read [the motion engine policy](motion-engine-policy.md) before selecting a runtime. Use [motion tokens](motion-tokens.md) for the shared feedback, quiet, spatial, physical, and expressive vocabulary, and [motion primitives](motion-primitives.md) for reusable behavioral contracts. This reference defines interaction behavior; those references define runtime ownership, token mapping, and reusable composition.
+
 This system uses fluid-interface physics as a behavioral foundation, not a visual costume. Do not imitate Apple chrome, roundedness, glass, iconography, navigation, or product conventions. Express the behavior through the repository's own tokens, LoomLogic's calm editorial/luxury-tech direction, product-specific branding, and the established Radix/shadcn primitive base. React Bits, Aceternity, Magic UI, Uiverse, and other installed guidance remain optional sources under the routing and adaptation rules in `SKILL.md`.
 
 ## Interaction engine
@@ -15,7 +17,7 @@ Treat an interaction as six cooperating layers. Fix the earliest broken layer ra
 5. **Feedback and adaptation:** visual, audio, and haptic feedback plus motion/transparency/contrast preferences.
 6. **Runtime:** compositor cost, frame pacing, interruption, cleanup, server/client boundaries, and device capability.
 
-Build on existing accessible components. Radix/shadcn primitives continue to own semantics, focus trapping/restoration, keyboard behavior, dismissal, and ARIA. Add motion around their lifecycle or through supported composition APIs; do not replace a `Dialog`, `Popover`, `Menu`, `Tabs`, or `Tooltip` with animated `div` elements. Keep one state owner and one motion engine per interaction.
+Build on existing accessible components. Radix/shadcn primitives continue to own semantics, focus trapping/restoration, keyboard behavior, dismissal, and ARIA. Add motion around their lifecycle or through supported composition APIs; do not replace a `Dialog`, `Popover`, `Menu`, `Tabs`, or `Tooltip` with animated `div` elements. Keep one canonical state owner and one motion engine per interaction.
 
 ## Engine rules
 
@@ -35,15 +37,17 @@ Build on existing accessible components. Radix/shadcn primitives continue to own
 - Retarget from the current rendered value and current velocity, not from a stale logical start or previous target. A reversal must not jump or stop at an invisible wall.
 - Separate X and Y motion when their velocities or constraints differ.
 - Keep domain state distinct from transient presentation state. Commit product state at the correct semantic event; do not write every animation frame into application or server state.
-- CSS transitions are appropriate for simple, non-gesture state changes. Use the existing spring/motion system when live values, velocity, layout measurement, exit presence, or mid-flight interruption matter.
+- CSS transitions are appropriate for simple web state changes. Use `motion/react` for web product interactions when live values, velocity, layout measurement, exit presence, or mid-flight interruption matter; Reanimated plus React Native Gesture Handler for continuous Expo/React Native gestures; and native SwiftUI/UIKit/AppKit APIs for native Apple. GSAP remains a web-only specialist for bounded complex or cinematic sequences.
 
-### Spring physics and velocity handoff
+### Motion vocabulary, spring physics, and velocity handoff
 
 Think in terms of response and damping rather than a fake fixed duration:
 
-- **Quiet spring:** critically damped or nearly so; no visible overshoot. Use for frequent panels, menus, selection, layout settling, and high-trust workflows.
-- **Physical spring:** slight overshoot only when the initiating gesture carried energy, such as a flick or drag release.
-- **Expressive spring:** rare and product-specific. Never use bounce to decorate confirmations, clinical status, financial values, errors, or routine navigation.
+- **Feedback:** immediate local acknowledgement; usually timed and restrained rather than sprung.
+- **Quiet:** critically damped or nearly so; no visible overshoot. Use for frequent panels, menus, selection, layout settling, and high-trust workflows.
+- **Spatial:** preserve origin, destination, and object identity; continuity matters more than bounce.
+- **Physical:** slight overshoot only when the initiating gesture carried energy, such as a flick or drag release.
+- **Expressive:** rare and product-specific. Never use bounce to decorate confirmations, clinical status, financial values, errors, or routine navigation.
 
 Start with a roughly 0.3–0.4 s response and damping near 1.0, then tune by observed behavior and the installed library's parameter model. These are calibration points, not global constants. Frequent expert workflows should settle faster and more quietly.
 
@@ -74,7 +78,7 @@ Position and velocity may disagree. Use both with explicit product rules: a slow
 
 - An element should enter and leave through a path that preserves its source relationship. Anchor popovers and menus to their trigger; dismiss panels toward their origin when that remains meaningful.
 - Use a shared-element transition only when the source and destination represent the same object. Preserve recognizable geometry, crop, corner treatment, and content hierarchy during the handoff.
-- Prefer the platform or current stack's layout/shared-element facility, such as View Transitions or an existing layout identity API. Do not add a second animation library solely for one shared element without a measured need.
+- Choose one shared-element owner. Use Motion layout identity for a Motion-owned React lifecycle, View Transitions as progressive enhancement for a route/page handoff, Reanimated for an appropriate Expo/React Native lifecycle, or native matched-geometry/transition APIs on Apple. Do not combine them for the same handoff or add a second animation library solely for one shared element.
 - Freeze or deliberately reconcile scroll position and layout measurements during the handoff. Handle source removal, destination loading, interrupted navigation, and back navigation.
 - Move focus to the new semantic destination when navigation completes, then restore it correctly on return. Motion continuity never replaces routing, headings, announcements, or focus management.
 - For reduced motion, use a short cross-fade or immediate state change while retaining focus and context cues.
@@ -183,7 +187,7 @@ Use these as interaction grammar, not fixed layouts. Product requirements and ea
 
 Apply these rules while planning and implementing:
 
-1. State the interaction's purpose in one phrase: feedback, continuity, orientation, direct manipulation, or comprehension. Remove motion with no purpose.
+1. State the interaction's purpose, then select the nearest shared vocabulary: feedback, quiet, spatial, physical, or expressive. Remove motion with no purpose.
 2. Inspect the existing primitive, state owner, motion stack, tokens, accessibility behavior, and dependency versions before editing.
 3. Draw the states and interruption paths before choosing animation values. Include cancellation, reversal, async failure, navigation back, and reduced motion.
 4. Keep accessible primitives authoritative. Add presentation without forking their semantics.

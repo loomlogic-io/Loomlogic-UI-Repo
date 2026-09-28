@@ -34,6 +34,8 @@ Read this reference before sharing a native Apple interface across iOS, iPadOS, 
 
 Use standard Apple behavior for the functional layer and LoomLogic design for the content layer. Do not recolor every system control blue, replace standard typography in menus or controls, redraw SF Symbols, or force identical chrome across platforms. Brand through hierarchy, composition, content typography where suitable, neutral surfaces, restrained accents, data visualization, domain interactions, and approved product assets.
 
+Apple guidance informs native behavior and platform conventions; it is not a visual skin for web apps. Native Apple motion uses the existing project's SwiftUI, UIKit, or AppKit animation and gesture APIs. `motion/react` and GSAP are web-only. Keep one product-state owner and one native motion owner per interaction; let system navigation, presentation, window, keyboard, and scrolling transitions remain system-owned.
+
 ## Architecture questions
 
 Before implementation, answer:

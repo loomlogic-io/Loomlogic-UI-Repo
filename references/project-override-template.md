@@ -39,8 +39,9 @@ Copy the template below to `.loomlogic-ui/overrides.md` at a repository root or 
 
 ## Motion policy
 
-- Existing motion stack: [library or CSS]
-- Motion intensity: [quiet / moderate / expressive]
+- Existing runtimes by target: [CSS / motion/react / View Transitions / GSAP / Reanimated + React Native Gesture Handler / SwiftUI/UIKit/AppKit APIs]
+- Motion profiles used: [feedback / quiet / spatial / physical / expressive]
+- State and engine ownership: [where canonical state lives and any intentional interaction boundaries]
 - Continuous/scroll motion: [policy]
 - Reduced-motion expectation: [project-specific behavior]
 

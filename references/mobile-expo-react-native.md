@@ -4,6 +4,8 @@ Read this reference for Expo or React Native design, implementation, review, or 
 
 Treat Apple's Human Interface Guidelines and Android's platform guidance as behavioral baselines, then adapt them through the repository's product requirements and design system.
 
+For animation ownership, follow [the motion engine policy](motion-engine-policy.md), [motion tokens](motion-tokens.md), and, when reusable interaction structure is needed, [motion primitives](motion-primitives.md). Motion and GSAP are web-only; they do not cross into Expo or React Native.
+
 ## Preserve the design hierarchy
 
 Apply the source priority in `SKILL.md` before these defaults. Preserve the project's navigation model, tokens, components, dependencies, and native architecture when they are sound.
@@ -61,15 +63,15 @@ Choose motion by purpose and frequency before choosing an API.
 
 - Keep high-frequency navigation, tab, keyboard, and scrolling behavior platform-native. Frequent feedback should be quiet and fast; reserve expressive motion for rare moments with a product purpose.
 - Use motion for feedback, spatial continuity, state change, or explanation. Do not move data merely to decorate it.
-- Use Reanimated and the gesture system for continuous, interruptible, finger-driven interactions. Preserve the live value when a gesture begins, carry release velocity into the settling animation, and keep the control grabbable during motion.
+- Use React Native Reanimated plus React Native Gesture Handler for continuous, interruptible, finger-driven interactions. Preserve the live value when a gesture begins, carry release velocity into the settling animation, and keep the control grabbable during motion.
 - Keep gesture-to-animation updates off the JavaScript thread. Prefer shared values and worklets for per-frame work; cross to JavaScript only at coarse event boundaries.
 - Prefer transform and opacity for smooth animation. Avoid repeatedly animating layout properties in hot paths, animating recycled list rows on every mount, or measuring on each frame.
 - Press feedback begins on press-in. Rows generally use a subtle highlight; compact buttons or cards may use a restrained scale. Exits should be quicker than entrances and should preserve spatial origin.
-- Use the project's spring and timing vocabulary consistently. Do not add bounce unless the gesture or brand behavior earns it.
+- Use the shared feedback, quiet, spatial, physical, and expressive vocabulary. Do not introduce competing spring names or add bounce unless the gesture or brand behavior earns it.
 - Haptics are synchronized punctuation for selection, snapping, success, warning, or failure. Use at most one appropriate event per user action and always provide visual or audible feedback too.
 - Respect Reduce Motion. Replace nonessential spatial movement with an immediate state change or restrained crossfade while leaving system-managed transitions to the OS.
 
-Use `animate-expo` when the task needs deeper implementation guidance. Do not add Reanimated or another motion dependency for a simple transition the current stack already handles.
+Keep one product-state owner and one motion engine per interaction. Let React Navigation and the operating system own their standard transitions; do not drive the same presentation with Reanimated. Use `animate-expo` when the task needs deeper implementation guidance. Do not add Reanimated or another motion dependency for a simple transition the current stack already handles.
 
 ## State and perceived performance
 
