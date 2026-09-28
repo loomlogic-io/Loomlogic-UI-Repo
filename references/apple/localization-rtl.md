@@ -35,4 +35,3 @@ Internationalize the architecture before translating copy. Layout, navigation, s
 - VoiceOver pronunciation/order and keyboard shortcuts under localized layouts.
 
 Official baselines: [Right to left](https://developer.apple.com/design/human-interface-guidelines/right-to-left), [Inclusion](https://developer.apple.com/design/human-interface-guidelines/inclusion), [Interface fundamentals](https://developer.apple.com/documentation/technologyoverviews/interface-fundamentals), and [Localization](https://developer.apple.com/documentation/xcode/localization).
-

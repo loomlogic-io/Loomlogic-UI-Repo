@@ -54,4 +54,3 @@ Don't hide product capability behind one modality. Hover, swipe, force, secondar
 - Under Reduce Motion, remove large travel, parallax, elastic overshoot, and momentum while preserving state, focus, and causality.
 
 Official baselines: [Gestures](https://developer.apple.com/design/human-interface-guidelines/gestures), [Keyboards](https://developer.apple.com/design/human-interface-guidelines/keyboards), [Virtual keyboards](https://developer.apple.com/design/human-interface-guidelines/virtual-keyboards), [Pointing devices](https://developer.apple.com/design/human-interface-guidelines/pointing-devices), [Focus and selection](https://developer.apple.com/design/human-interface-guidelines/focus-and-selection), and [Drag and drop](https://developer.apple.com/design/human-interface-guidelines/drag-and-drop).
-

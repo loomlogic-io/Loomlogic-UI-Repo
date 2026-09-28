@@ -59,4 +59,3 @@ Reject:
 - version-specific visual assumptions without API availability and fallback behavior.
 
 Official baselines: [Getting started](https://developer.apple.com/design/human-interface-guidelines/getting-started), [Layout](https://developer.apple.com/design/human-interface-guidelines/layout), and [Design principles](https://developer.apple.com/design/human-interface-guidelines/design-principles).
-

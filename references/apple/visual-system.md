@@ -49,4 +49,3 @@ Use current platform materials to distinguish functional controls/navigation fro
 - System chrome follows Apple behavior. LoomLogic appears through content hierarchy, data views, product-specific controls, restrained radii/borders, and carefully chosen motion.
 
 Official baselines: [Materials](https://developer.apple.com/design/human-interface-guidelines/materials), [Typography](https://developer.apple.com/design/human-interface-guidelines/typography), [Color](https://developer.apple.com/design/human-interface-guidelines/color), [Dark Mode](https://developer.apple.com/design/human-interface-guidelines/dark-mode), [SF Symbols HIG](https://developer.apple.com/design/human-interface-guidelines/sf-symbols), and [SF Symbols](https://developer.apple.com/sf-symbols/).
-

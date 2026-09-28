@@ -32,4 +32,3 @@ Read this reference when creating, updating, integrating, or reviewing an app ic
 This skill stores guidance and official links only. It must not contain Apple templates, SF Symbols, Icon Composer binaries/files, product bezels, UI kits, or copied screenshots. Project-specific icon source and export files belong in the product repository under its asset and licensing policy.
 
 Official baselines: [App icons HIG](https://developer.apple.com/design/human-interface-guidelines/app-icons), [Icon Composer](https://developer.apple.com/icon-composer/), [Creating your app icon using Icon Composer](https://developer.apple.com/documentation/xcode/creating-your-app-icon-using-icon-composer), and [Apple Design Resources](https://developer.apple.com/design/resources/).
-

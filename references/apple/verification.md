@@ -72,4 +72,3 @@ Report:
 - anything not run, why, and the resulting risk.
 
 Official tools: [Xcode](https://developer.apple.com/documentation/xcode), [Accessibility Inspector](https://developer.apple.com/documentation/accessibility/accessibility-inspector), [Performing accessibility testing](https://developer.apple.com/documentation/accessibility/performing-accessibility-testing-for-your-app), and [Record, replay, and review UI automation with Xcode](https://developer.apple.com/videos/play/wwdc2025/344/).
-

@@ -43,4 +43,3 @@ iPad supports focused touch use, keyboard-and-pointer productivity, Pencil work,
 - The result uses iPad's space and inputs intentionally while retaining the product's identity.
 
 Official baselines: [Designing for iPadOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-ipados), [Layout](https://developer.apple.com/design/human-interface-guidelines/layout), [Multitasking](https://developer.apple.com/design/human-interface-guidelines/multitasking), and [Windows](https://developer.apple.com/design/human-interface-guidelines/windows).
-

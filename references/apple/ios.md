@@ -37,4 +37,3 @@ iPhone is a personal, touch-first device commonly used in short, interrupted ses
 - The experience was run in Simulator and, for device-only behavior such as representative haptics or production VoiceOver validation, on hardware where required.
 
 Official baseline: [Designing for iOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-ios).
-

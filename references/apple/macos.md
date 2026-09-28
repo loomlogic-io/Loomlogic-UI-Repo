@@ -48,4 +48,3 @@ Treat Catalyst as a Mac product target, not merely a build destination. Audit me
 - The interface has Mac-appropriate density and platform behavior while remaining recognizably the product.
 
 Official baseline: [Designing for macOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-macos).
-

@@ -62,4 +62,3 @@ Don't create a new window merely to avoid designing navigation. Do create one wh
 - Does a compact iPad window retain the same capabilities as a wide one?
 
 Official baselines: [Windows](https://developer.apple.com/design/human-interface-guidelines/windows), [Multitasking](https://developer.apple.com/design/human-interface-guidelines/multitasking), [Layout](https://developer.apple.com/design/human-interface-guidelines/layout), and [Multitasking on iPad, Mac, and Apple Vision Pro](https://developer.apple.com/documentation/uikit/multitasking-on-ipad-mac-and-apple-vision-pro).
-

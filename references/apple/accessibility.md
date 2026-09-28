@@ -44,4 +44,3 @@ Accessibility is part of the interface architecture, not a post-build annotation
 Record the platform, device, OS, settings, and task path actually tested. Do not claim accessibility from framework choice or inspector results alone.
 
 Official baselines: [Accessibility HIG](https://developer.apple.com/design/human-interface-guidelines/accessibility), [Accessibility Inspector](https://developer.apple.com/documentation/accessibility/accessibility-inspector), [Testing system accessibility features](https://developer.apple.com/documentation/accessibility/testing-system-accessibility-features-in-your-app), [Performing accessibility testing](https://developer.apple.com/documentation/accessibility/performing-accessibility-testing-for-your-app), and [SwiftUI accessibility fundamentals](https://developer.apple.com/documentation/swiftui/accessibility-fundamentals).
-

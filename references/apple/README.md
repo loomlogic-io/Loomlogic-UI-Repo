@@ -45,4 +45,3 @@ Standard Apple behavior is not a visual theme. A LoomLogic app should feel nativ
 - Use Apple Design Resources and tools only for supported design/development work and under their current terms.
 - Treat screenshots and third-party apps as observational evidence, never as permission to copy layouts, trade dress, copy, or assets.
 - Recheck live guidance for each major SDK cycle. The official resource index was last reviewed on 2026-09-28.
-

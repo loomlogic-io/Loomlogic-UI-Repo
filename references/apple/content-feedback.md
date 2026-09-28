@@ -50,4 +50,3 @@ Pair color, animation, sound, and haptics with persistent or accessible meaning.
 - Support retry only when it can succeed without duplicating side effects; make idempotency a product/data concern, not a visual assumption.
 
 Official baselines: [Writing](https://developer.apple.com/design/human-interface-guidelines/writing), [Design principles](https://developer.apple.com/design/human-interface-guidelines/design-principles), [Alerts](https://developer.apple.com/design/human-interface-guidelines/alerts), [Progress indicators](https://developer.apple.com/design/human-interface-guidelines/progress-indicators), [Launching](https://developer.apple.com/design/human-interface-guidelines/launching), [Notifications](https://developer.apple.com/design/human-interface-guidelines/notifications), and [Playing haptics](https://developer.apple.com/design/human-interface-guidelines/playing-haptics).
-

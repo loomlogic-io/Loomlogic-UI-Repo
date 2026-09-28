@@ -65,4 +65,3 @@ Back, Close, Cancel, and Done are not interchangeable. Back moves through hierar
 - **macOS:** prefer simultaneous context and nonmodal windows/panels where productive; keep menus and shortcuts authoritative and use sheets for window-scoped decisions.
 
 Official baselines: [Tab bars](https://developer.apple.com/design/human-interface-guidelines/tab-bars), [Sidebars](https://developer.apple.com/design/human-interface-guidelines/sidebars), [Split views](https://developer.apple.com/design/human-interface-guidelines/split-views), [Toolbars](https://developer.apple.com/design/human-interface-guidelines/toolbars), [Modality](https://developer.apple.com/design/human-interface-guidelines/modality), and [Alerts](https://developer.apple.com/design/human-interface-guidelines/alerts).
-
