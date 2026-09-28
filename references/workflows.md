@@ -38,6 +38,15 @@ Read only the section matching the current task. Shared source priority, adaptat
 5. Use Reanimated and gesture worklets only where continuous or interruptible native motion requires them. Preserve the project's existing stack.
 6. Verify the full flow in the simulator/emulator and profile the release build on representative hardware. Report which platforms, devices, themes, accessibility settings, and states were actually tested.
 
+## Native Apple
+
+1. Read `apple/README.md`, `apple/platform-adaptation.md`, the relevant platform profile, and only the task-specific Apple references they route to.
+2. Inspect the Xcode project or package, deployment targets, supported destinations, scene/document model, framework mix, navigation and command structure, token/assets strategy, accessibility utilities, and representative nearby views. Preserve sound existing architecture.
+3. Define the platform contract before styling: iOS hierarchy and reachability; iPadOS resizing, multitasking, keyboard/pointer, and multiwindow behavior; macOS windows, menu bar, commands, density, selection, and active/inactive states.
+4. Separate platform chrome from branded content. Prefer standard navigation, controls, presentations, materials, semantic colors, text styles, SF Symbols, focus, and accessibility behavior. Apply LoomLogic identity through content hierarchy, data views, product interactions, restrained brand accents, and the Dynamic Interaction System where it adds value.
+5. Model navigation, commands, presentation choice, window ownership, loading/failure, restoration, and destructive/undo boundaries before polishing. Add availability checks and deployment-compatible fallbacks for newer APIs.
+6. Verify with `apple/verification.md`: build every affected scheme/destination, run tests, inspect representative sizes and appearances, resize iPad and Mac windows, exercise keyboard/pointer/touch/drag-drop as relevant, and test accessibility settings on Simulator and physical hardware where required. Report what wasn't run.
+
 ## Landing page or marketing surface
 
 1. Clarify audience, promise, proof, conversion action, content hierarchy, and available brand assets.

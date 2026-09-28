@@ -19,6 +19,8 @@ Copy the template below to `.loomlogic-ui/overrides.md` at a repository root or 
 - Canonical primitives: [path]
 - Component registry: [path, for example components.json]
 - Representative screens: [paths]
+- Native Apple targets: [iOS / iPadOS / macOS, deployment versions, schemes]
+- Apple UI architecture: [SwiftUI / UIKit / AppKit / Catalyst, scene/document model]
 
 ## Component-source policy
 
@@ -51,6 +53,7 @@ Copy the template below to `.loomlogic-ui/overrides.md` at a repository root or 
 - Required commands: [lint, typecheck, tests]
 - Required viewports, simulators, or devices: [list]
 - Required browser, platform, or accessibility checks: [list]
+- Required Apple destinations and input modes: [Simulator/device/Mac, window sizes, touch, keyboard, pointer, drag and drop]
 ```
 
 This file is subordinate to user instructions, `AGENTS.md`, `DESIGN.md`, and the actual codebase. It cannot waive accessibility or authorize dependency changes, publishing, network access, or destructive cleanup.
