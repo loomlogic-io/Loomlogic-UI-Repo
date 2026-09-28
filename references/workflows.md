@@ -35,7 +35,7 @@ Read only the section matching the current task. Shared source priority, adaptat
 2. Define the flow's route and back semantics before styling. Keep product and LoomLogic brand rules authoritative while using native controls and platform behavior.
 3. If the Appllama MCP is already available and reference research would change a decision, read `appllama-research.md` and stay within the matching research budget. Otherwise proceed without it.
 4. Implement complete state cycles with semantic colors, safe areas, large text, screen-reader behavior, keyboard handling, and reduced motion.
-5. Use Reanimated and gesture worklets only where continuous or interruptible native motion requires them. Preserve the project's existing stack.
+5. Use Reanimated plus React Native Gesture Handler where continuous, interruptible, gesture-driven motion requires them. Preserve the project's existing native stack; do not import Motion or GSAP.
 6. Verify the full flow in the simulator/emulator and profile the release build on representative hardware. Report which platforms, devices, themes, accessibility settings, and states were actually tested.
 
 ## Native Apple
@@ -43,7 +43,7 @@ Read only the section matching the current task. Shared source priority, adaptat
 1. Read `apple/README.md`, `apple/platform-adaptation.md`, the relevant platform profile, and only the task-specific Apple references they route to.
 2. Inspect the Xcode project or package, deployment targets, supported destinations, scene/document model, framework mix, navigation and command structure, token/assets strategy, accessibility utilities, and representative nearby views. Preserve sound existing architecture.
 3. Define the platform contract before styling: iOS hierarchy and reachability; iPadOS resizing, multitasking, keyboard/pointer, and multiwindow behavior; macOS windows, menu bar, commands, density, selection, and active/inactive states.
-4. Separate platform chrome from branded content. Prefer standard navigation, controls, presentations, materials, semantic colors, text styles, SF Symbols, focus, and accessibility behavior. Apply LoomLogic identity through content hierarchy, data views, product interactions, restrained brand accents, and the Dynamic Interaction System where it adds value.
+4. Separate platform chrome from branded content. Prefer standard navigation, controls, presentations, materials, semantic colors, text styles, SF Symbols, focus, accessibility behavior, and native SwiftUI/UIKit/AppKit animation APIs. Apply LoomLogic identity through content hierarchy, data views, product interactions, restrained brand accents, and the Dynamic Interaction System where it adds value. Motion and GSAP are web-only.
 5. Model navigation, commands, presentation choice, window ownership, loading/failure, restoration, and destructive/undo boundaries before polishing. Add availability checks and deployment-compatible fallbacks for newer APIs.
 6. Verify with `apple/verification.md`: build every affected scheme/destination, run tests, inspect representative sizes and appearances, resize iPad and Mac windows, exercise keyboard/pointer/touch/drag-drop as relevant, and test accessibility settings on Simulator and physical hardware where required. Report what wasn't run.
 
@@ -68,19 +68,20 @@ Read only the section matching the current task. Shared source priority, adaptat
 ## Motion
 
 1. Explain the purpose: feedback, continuity, spatial orientation, attention, or delight.
-2. For gesture physics, shared elements, morphing, scroll-linked motion, materials, or a motion-system refactor, read `dynamic-interaction-system.md` and use its engine rules and checklist.
-3. Check frequency. Repeated workflows demand faster and quieter motion.
-4. Reuse the existing motion stack. Choose CSS for simple transitions, Motion for React layout/gesture needs, GSAP for complex timelines/scroll, Anime.js for SVG/stagger choreography.
-5. Animate compositor-friendly properties where possible and make interactions interruptible.
-6. Define exit behavior, input modality, adaptive/reduced-motion behavior, and failure/cancellation paths before polishing the happy path.
-7. Test on representative hardware; pause offscreen/hidden continuous effects and avoid essential information encoded only in motion.
+2. Read `motion-engine-policy.md`; it is authoritative for runtime selection, platform boundaries, and one-engine ownership. Read `motion-tokens.md` when choosing values and `motion-primitives.md` when defining a reusable interaction.
+3. For gesture physics, shared elements, morphing, scroll-linked motion, materials, or a motion-system refactor, also read `dynamic-interaction-system.md` and use its behavioral rules and checklist.
+4. Check frequency. Repeated workflows demand faster and quieter motion. Use the shared feedback, quiet, spatial, physical, and expressive vocabulary.
+5. Apply the hierarchy: CSS for simple web transitions; `motion/react` for web product motion; View Transitions as progressive route/page continuity; GSAP only for bounded complex or cinematic web sequences; Reanimated plus React Native Gesture Handler for continuous Expo/React Native gestures; native SwiftUI/UIKit/AppKit APIs for Apple targets.
+6. Keep one canonical state owner and one motion engine per interaction. Never let Motion and GSAP co-own an interaction or animate the same properties.
+7. Animate compositor-friendly properties where possible and make interactions interruptible. Define exit, input modality, adaptive/reduced-motion, failure, and cancellation paths before polishing the happy path.
+8. Test on representative hardware; pause offscreen/hidden continuous effects and avoid essential information encoded only in motion.
 
 ## Dynamic interaction audit or refactor
 
-1. Read `dynamic-interaction-system.md` and use its audit/refactor mode.
+1. Read `motion-engine-policy.md` and `dynamic-interaction-system.md`; use the policy to classify runtime ownership and the interaction system's audit/refactor mode for behavior.
 2. Inspect representative behavior at runtime before inferring from code. Inventory the actual primitives, state owners, motion engines, gesture handlers, observers, feedback channels, and preference utilities.
 3. In audit-only work, report evidence and do not edit. When fixes are requested, restore semantics, truthful state, focus, and adaptive motion before tuning physics or adding polish.
-4. Refactor in minimal behavior-preserving slices. Keep Radix/shadcn semantics and existing public APIs; remove a dependency only after all call sites and runtime paths are proven migrated.
+4. Refactor in minimal behavior-preserving slices, one complete interaction at a time. Keep Radix/shadcn semantics and existing public APIs; remove a dependency only after all call sites and runtime paths are proven migrated.
 5. Verify slow/fast/reversed input, keyboard and touch alternatives, route restoration, zoom/large text, reduced motion/transparency, async failure, and representative device performance.
 
 ## Design-system cleanup

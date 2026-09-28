@@ -44,6 +44,15 @@ for (const reference of appleReferences) {
   if (!fs.existsSync(reference)) throw new Error(`Missing Apple reference: ${reference}`);
 }
 
+const motionReferences = [
+  "references/motion-engine-policy.md",
+  "references/motion-tokens.md",
+  "references/motion-primitives.md",
+];
+for (const reference of motionReferences) {
+  if (!fs.existsSync(reference)) throw new Error(`Missing motion reference: ${reference}`);
+}
+
 function markdownFiles(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const target = path.join(directory, entry.name);
@@ -72,5 +81,5 @@ for (const file of markdownFiles(".")) {
 }
 
 console.log(
-  `Validated LoomLogic UI, ${new Set(entrypointReferences).size} entrypoint references, and ${appleReferences.length} Apple references.`,
+  `Validated LoomLogic UI, ${new Set(entrypointReferences).size} entrypoint references, ${motionReferences.length} motion references, and ${appleReferences.length} Apple references.`,
 );

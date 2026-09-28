@@ -31,9 +31,9 @@ These files are lightweight project overrides, not copies of this skill. They ma
 
 Identify the target platform before choosing specialists or implementation patterns.
 
-- **Web:** use the LoomLogic UI core, the repository's web stack, and the web routes below. Keep lower-level interactive behavior on established accessible primitives, including the project's Radix/shadcn-style primitives when present; preserve semantic HTML, keyboard operation, focus management, and ARIA behavior.
-- **Expo / React Native:** use the LoomLogic UI core plus [references/mobile-expo-react-native.md](references/mobile-expo-react-native.md). Native platform conventions refine implementation behavior; they do not replace the product's brand, tokens, content hierarchy, or LoomLogic's visual direction.
-- **Native Apple:** use the LoomLogic UI core plus the [Native Apple reference index](references/apple/README.md) for SwiftUI, UIKit, AppKit, and Mac Catalyst work. Select the iOS, iPadOS, or macOS adaptation profile before choosing structure or controls; iPadOS is a distinct, resizable, multi-input target rather than a scaled iPhone layout. Prefer standard framework behavior and current official Apple guidance while keeping the product's content layer and LoomLogic character intact.
+- **Web:** use the LoomLogic UI core, the repository's web stack, and the web routes below. Keep lower-level interactive behavior on established accessible primitives, including the project's Radix/shadcn-style primitives when present; preserve semantic HTML, keyboard operation, focus management, and ARIA behavior. For motion, follow [the motion engine policy](references/motion-engine-policy.md): CSS for simple transitions, `motion/react` for product motion, View Transitions as progressive route/page enhancement, and GSAP only for bounded complex or cinematic sequences.
+- **Expo / React Native:** use the LoomLogic UI core plus [references/mobile-expo-react-native.md](references/mobile-expo-react-native.md). Native platform conventions refine implementation behavior; they do not replace the product's brand, tokens, content hierarchy, or LoomLogic's visual direction. Use Reanimated with React Native Gesture Handler for continuous gesture-driven motion; web motion runtimes do not cross this boundary.
+- **Native Apple:** use the LoomLogic UI core plus the [Native Apple reference index](references/apple/README.md) for SwiftUI, UIKit, AppKit, and Mac Catalyst work. Select the iOS, iPadOS, or macOS adaptation profile before choosing structure or controls; iPadOS is a distinct, resizable, multi-input target rather than a scaled iPhone layout. Prefer standard framework behavior and current official Apple guidance while keeping the product's content layer and LoomLogic character intact. Use native SwiftUI/UIKit/AppKit animation APIs; Motion and GSAP are web-only.
 - **Optional mobile reference research:** if an Appllama MCP is already available and research would improve the task, read [references/appllama-research.md](references/appllama-research.md) before building. The MCP is research-only and never required. Do not delay or block implementation when it is absent.
 
 For mixed-platform repositories, route each surface independently. Do not import web component libraries into React Native or native Apple targets, force mobile conventions onto desktop web or macOS, or flatten iPhone, iPad, and Mac into one layout. Share product models and tokens where useful; adapt navigation, commands, presentation, density, windows, and input to each platform.
@@ -110,7 +110,7 @@ Use these semantic foundations as approved starting tokens. Map them into the re
 - Aim for a calm editorial/luxury-tech character: architectural composition, precise typography, useful density, strong alignment, considered whitespace, and understated technical detail. Premium quality should come from proportion and craft, not decoration.
 - Keep geometry restrained: roughly 6–8px for buttons and inputs, 8–10px for small cards, 10–12px for panels, 12–16px for large product or media frames, and 12–14px for modals. Reserve pills for tags, filters, status, and compact metadata.
 - Prefer fine borders, tonal surface changes, and minimal shadows. Do not automatically wrap each section in a card.
-- Keep motion deliberate and sparse. Favor opacity, masks, line drawing, and subtle transforms; support reduced motion. Useful timing ranges are 150–180ms for micro-interactions, 220–280ms for component transitions, and 400–550ms for rare section transitions, with `cubic-bezier(.22, 1, .36, 1)` as a suitable default ease.
+- Keep motion deliberate and sparse. Favor opacity, masks, line drawing, and subtle transforms; support reduced motion. Use the [motion-token vocabulary](references/motion-tokens.md)—feedback, quiet, spatial, physical, and expressive—instead of inventing competing spring or timing names.
 - Reject the generic purple/neon/glassmorphism AI look: no purple carryover, cyberpunk glow, giant blurred shadows, gratuitous gradients, floating glass panels, rounded-everything styling, generic AI imagery, or decorative motion without a product role.
 
 ## Start with reconnaissance
@@ -136,20 +136,22 @@ Use at most one broad craft/review skill and only the specialists the task genui
 - Use Aceternity UI for polished React/Tailwind compositions, effects, and interaction patterns when an expressive marketing or storytelling surface warrants them. Verify the current official implementation before use.
 - Use `animated-component-libraries` for Magic UI and React Bits. Prefer Magic UI for shadcn/Tailwind-aligned animated sections and primitives. Prefer React Bits for distinctive text animation, backgrounds, cursor effects, animated components, and self-contained micro-interactions. When React Bits is a candidate, read [references/react-bits.md](references/react-bits.md) before selecting or installing anything.
 - Use `pick-ui-library` when the task is dependency selection rather than visual inspiration. Respect its explicit-invocation policy.
-- Use `animate`, `emil-design-eng`, `apple-design`, `gsap-core`, or `animejs` only when motion is central and the selected tool matches the interaction. Use `mobile-native` for touch/mobile-web behavior. Use `review-animations`, `improve-animations`, or `find-animation-opportunities` for their stated read-only review modes.
+- Use `animate`, `emil-design-eng`, `apple-design`, or `gsap-core` only when motion is central and the selected specialist fits the interaction. Specialist guidance does not override the runtime hierarchy in [references/motion-engine-policy.md](references/motion-engine-policy.md). Use `mobile-native` for touch/mobile-web behavior. Use `review-animations`, `improve-animations`, or `find-animation-opportunities` for their stated read-only review modes.
 - For Expo/React Native work, follow the mobile reference first; use `animate-expo` when motion implementation needs a specialist. Web catalogs are visual references only unless their patterns can be rebuilt with native primitives.
 - For native Apple work, follow the Apple reference index and [references/apple/platform-adaptation.md](references/apple/platform-adaptation.md) before selecting implementation patterns. Use current Apple HIG and framework documentation as the platform authority. Web catalogs and Expo patterns may inform product intent, but never supply production controls or platform behavior. Use `apple-design` only as an optional motion/physics lens; it does not replace Apple's current guidance or authorize copying Apple styling.
 - Use `prototype` only when the user explicitly wants selectable variants. It must remain isolated until the user chooses.
 
 If a named skill, MCP, CLI, or site is unavailable, say so briefly and continue with available project components or another appropriate source. Do not invent search results, APIs, or component names.
 
-## LoomLogic Dynamic Interaction System
+## LoomLogic motion and Dynamic Interaction System
 
-When interaction behavior is central—gesture-driven controls, interruptible motion, shared-element transitions, morphing components, scroll-linked relationships, layered materials, or a motion audit—read [references/dynamic-interaction-system.md](references/dynamic-interaction-system.md). It defines the LoomLogic interaction engine, implementation rules, product patterns, checklists, and audit/refactor mode.
+For any implementation or refactor that chooses an animation runtime, read [the motion engine policy](references/motion-engine-policy.md) first. It is authoritative for runtime ownership and platform boundaries. Read [motion tokens](references/motion-tokens.md) when choosing or normalizing values, and [motion primitives](references/motion-primitives.md) when creating reusable interaction patterns.
+
+When interaction behavior is central—gesture-driven controls, interruptible motion, shared-element transitions, morphing components, scroll-linked relationships, layered materials, or a motion audit—also read [references/dynamic-interaction-system.md](references/dynamic-interaction-system.md). It defines LoomLogic interaction behavior, product patterns, checklists, and audit/refactor mode.
 
 The system adopts fluid-interface physics and design thinking without adopting Apple styling. LoomLogic's restrained brand, project tokens, product context, and established primitives remain authoritative. Preserve Radix/shadcn semantics and behavior when present; React Bits, Aceternity, Magic UI, Uiverse, and other sources may contribute a purposeful presentation pattern but never replace accessible foundations or create a collage of motion engines.
 
-Use the lightest implementation that satisfies the behavior: CSS for discrete state changes, the project's existing spring/motion stack for continuous or interruptible interactions, and no animation when motion would not improve feedback, continuity, orientation, or comprehension.
+Use the lightest implementation that satisfies the behavior. On web, use CSS for simple transitions, `motion/react` for product interactions, View Transitions only as progressive route/page continuity, and GSAP only for bounded complex or cinematic sequences. On Expo/React Native, use Reanimated plus React Native Gesture Handler for continuous gesture-driven motion. On native Apple, use native SwiftUI/UIKit/AppKit APIs. Motion and GSAP are web-only. Keep one canonical state owner and one motion engine per interaction, and use no animation when it would not improve feedback, continuity, orientation, direct manipulation, or comprehension.
 
 ## Component-source decision tree
 
@@ -183,14 +185,14 @@ External code is raw material. Before it enters the project:
 - support loading, disabled, empty, error, overflow, long-content, and localization-sensitive states when relevant;
 - verify behavior at the project's breakpoints and on touch when applicable;
 - provide `prefers-reduced-motion` behavior and avoid hiding essential content behind animation;
-- prefer CSS for simple transitions; add a motion dependency only for interactions that need it;
+- follow the motion engine policy, keep one state owner and one engine per interaction, and add a motion dependency only when the selected runtime is justified;
 - scope styles locally. Never leak broad selectors, resets, keyframe names, CSS variables, or utility changes into unrelated UI;
 - remove demo code, placeholder copy, unused variants, unnecessary wrappers, redundant CSS, and unneeded dependencies;
 - verify packages and APIs against the installed version before coding.
 
 For React/TypeScript/Tailwind projects specifically: keep components typed, expose intentional props, use the existing class composition/variant utility, preserve server/client boundaries, and avoid turning a one-off visual into a new global primitive without evidence it will be reused.
 
-For native Apple projects specifically: preserve the existing SwiftUI/UIKit/AppKit architecture, scene and document model, deployment targets, availability policy, data flow, and public APIs. Prefer semantic system colors, text styles, SF Symbols, standard controls, platform presentations, commands, focus, and accessibility semantics. Treat compact and regular space as runtime conditions rather than device names; preserve task continuity as windows resize or scenes multiply. Add availability guards and fallbacks when newer APIs exceed the deployment target, and do not add third-party UI dependencies when Apple frameworks or the current project already solve the need.
+For native Apple projects specifically: preserve the existing SwiftUI/UIKit/AppKit architecture, scene and document model, deployment targets, availability policy, data flow, and public APIs. Prefer semantic system colors, text styles, SF Symbols, standard controls, platform presentations, commands, focus, accessibility semantics, and native system animation APIs. Treat compact and regular space as runtime conditions rather than device names; preserve task continuity as windows resize or scenes multiply. Add availability guards and fallbacks when newer APIs exceed the deployment target, do not add third-party UI dependencies when Apple frameworks or the current project already solve the need, and never import Motion or GSAP into a native Apple target.
 
 ## Quality gates
 
@@ -200,6 +202,7 @@ Reject or rewrite results that exhibit:
 - a second visual language alongside the product's existing system;
 - decorative gradients, glow, glass, huge display type, card grids, or animations used by reflex;
 - animation on every section, layout-property animation without need, inaccessible parallax, or missing reduced-motion handling;
+- multiple state owners or motion engines competing for the same interaction, property, or shared-element handoff;
 - global CSS leakage, arbitrary z-indexes, hardcoded colors where tokens exist, or fragile selector coupling;
 - unnecessary dependencies, duplicated primitives, large runtime effects for minor decoration, or hydration/client-boundary regressions;
 - semantic regressions, div-based controls, poor focus behavior, inaccessible contrast, or mobile-hostile targets;

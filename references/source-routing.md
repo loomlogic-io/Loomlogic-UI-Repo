@@ -2,6 +2,8 @@
 
 Read this reference when selecting design skills, catalogs, or motion tools. Availability can change; inspect the current environment and never assume a source is callable merely because it appears here.
 
+For any motion runtime decision, read [the motion engine policy](motion-engine-policy.md). Its CSS → `motion/react` → progressive View Transitions / specialist GSAP hierarchy and native platform boundaries are authoritative over specialist examples.
+
 ## Broad craft and project workflows
 
 | Resource | Use it for | Avoid using it for |
@@ -31,7 +33,7 @@ For native Apple tasks, route through `apple/README.md` and the relevant iOS, iP
 | iPad adaptation | `apple/ipados.md`, layout, windows, multitasking, input, and menu guidance | iPadOS is not a stretched iPhone or reduced Mac |
 | Liquid Glass and materials | `apple/visual-system.md` plus current Materials HIG and framework adoption guidance | Use for the functional navigation/control layer; don't turn the content layer into glassmorphism |
 | Symbols and app icons | Current SF Symbols, App icons, Icon Composer, and Apple Design Resources pages | Use tools and references under Apple's terms; don't vendor their resource files into this repository |
-| Motion and direct manipulation | Native framework APIs plus the Dynamic Interaction System | `apple-design` may refine physics thinking, but it isn't the source of current platform rules |
+| Motion and direct manipulation | Native SwiftUI/UIKit/AppKit APIs plus the Dynamic Interaction System | Motion and GSAP are web-only; `apple-design` may refine physics thinking, but it isn't the source of current platform rules |
 | Verification | `apple/verification.md`, Xcode, Accessibility Inspector, Simulator, and physical devices | Previews and screenshots alone are not runtime proof |
 
 ## Component and inspiration sources
@@ -54,8 +56,7 @@ External catalogs supply patterns, not product decisions. A result with the best
 | Build purposeful web motion | `animate` |
 | General component polish and motion judgment | `emil-design-eng` |
 | Gestures, sheets, springs, momentum, and fluid-interface behavior | LoomLogic Dynamic Interaction System; use `apple-design` as a physics/design-thinking specialist without importing Apple styling |
-| Framework-agnostic timelines, scroll, or complex choreography | `gsap-core` |
-| SVG morphing, staggered sequences, or light framework-independent choreography | `animejs` |
+| Complex web timelines, advanced scroll, SVG, motion paths, or cinematic marketing choreography | `gsap-core`, bounded to a GSAP-owned sequence |
 | Mobile web/touch/PWA behavior | `mobile-native` |
 | React Native/Expo motion | `animate-expo` |
 | Native Apple motion | SwiftUI/UIKit/AppKit APIs plus the LoomLogic Dynamic Interaction System; optionally `apple-design` for motion judgment |
@@ -64,7 +65,9 @@ External catalogs supply patterns, not product decisions. A result with the best
 | Audit a motion system and plan fixes | `improve-animations` |
 | Review specific animation code | `review-animations` |
 
-Prefer the project's existing motion stack. CSS transitions handle simple state changes. Use a library when layout animation, gesture values, exit choreography, interruption, or timelines justify it.
+Use CSS for simple web transitions and `motion/react` for product UI that needs presence, layout, gestures, live values, or interruption. Use View Transitions only as progressive enhancement for route/page continuity. Use GSAP only for bounded complex or cinematic web sequences, never as a co-owner with Motion. Expo/React Native uses Reanimated plus React Native Gesture Handler for continuous gestures; native Apple uses native system animation APIs. Keep one state owner and one engine per interaction.
+
+When existing code uses another animation runtime, do not trigger an unsolicited migration. Maintain sound behavior within the requested scope, report the mismatch, and use the hierarchy for new work or an authorized migration.
 
 ## Optional mobile research
 

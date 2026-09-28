@@ -48,6 +48,7 @@ Don't hide product capability behind one modality. Hover, swipe, force, secondar
 
 ## Direct manipulation and feedback
 
+- Implement custom motion with native SwiftUI, UIKit, or AppKit animation and gesture APIs. Motion and GSAP are web-only; keep one state owner and one native animation owner per interaction.
 - Press feedback begins immediately; product state commits at the semantic event.
 - Keep interactions interruptible and start retargeting from the rendered value. Preserve release velocity only when it maps to a safe valid destination.
 - Pair haptics and sound with visible and accessible feedback. Respect mute and preference settings and avoid feedback fatigue.

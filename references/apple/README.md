@@ -1,6 +1,6 @@
 # Native Apple reference index
 
-Read this index for UI work that ships through SwiftUI, UIKit, AppKit, or Mac Catalyst. It extends the LoomLogic UI core; it does not replace repository instructions, the product design system, current Apple documentation, or the existing Dynamic Interaction System.
+Read this index for UI work that ships through SwiftUI, UIKit, AppKit, or Mac Catalyst. It extends the LoomLogic UI core; it does not replace repository instructions, the product design system, current Apple documentation, or the existing Dynamic Interaction System. Native Apple motion uses native SwiftUI/UIKit/AppKit system animation APIs. `motion/react` and GSAP are web-only and must not ship in native Apple targets.
 
 ## Operating model
 
@@ -20,6 +20,7 @@ Read this index for UI work that ships through SwiftUI, UIKit, AppKit, or Mac Ca
 | Resizing, multiple scenes/windows, state restoration, full screen | [Windows and multitasking](windows-multitasking.md) |
 | Menu bar, context menus, command placement, shortcuts | [Menus and commands](menus-commands.md) |
 | Touch, gestures, keyboard, pointer, focus, Pencil, drag and drop | [Input and interaction](input-interaction.md) |
+| Motion runtime, ownership, tokens, and reusable behavior | [Motion engine policy](../motion-engine-policy.md), [motion tokens](../motion-tokens.md), [motion primitives](../motion-primitives.md), and [Input and interaction](input-interaction.md) |
 | Liquid Glass, standard materials, color, type, SF Symbols | [Visual system](visual-system.md) |
 | VoiceOver, Voice Control, Switch Control, Full Keyboard Access, adaptable UI | [Accessibility](accessibility.md) |
 | Labels, errors, haptics, sound, async state, progress | [Content and feedback](content-feedback.md) |
@@ -32,11 +33,13 @@ Read this index for UI work that ships through SwiftUI, UIKit, AppKit, or Mac Ca
 
 Keep these responsibilities distinct.
 
-**Platform layer:** navigation containers, window behavior, menu and command placement, toolbar semantics, controls, presentation behavior, keyboard conventions, focus, pointer behavior, semantic colors, text styles, SF Symbols, accessibility, system materials, safe areas, and state restoration.
+**Platform layer:** navigation containers, window behavior, menu and command placement, toolbar semantics, controls, presentation behavior, native animation APIs, keyboard conventions, focus, pointer behavior, semantic colors, text styles, SF Symbols, accessibility, system materials, safe areas, and state restoration.
 
 **LoomLogic/product layer:** information architecture, task hierarchy, data visualization, domain-specific workspaces, product copy, content density, custom interactions, restrained brand accents, approved assets, and the Dynamic Interaction System.
 
 Standard Apple behavior is not a visual theme. A LoomLogic app should feel native in operation without becoming an imitation of Settings, Finder, or another Apple app. Keep the content layer calm, precise, and recognizably LoomLogic; let system chrome behave like the platform.
+
+The Dynamic Interaction System and Apple guidance inform purpose, continuity, physical behavior, and platform conventions; they do not visually skin web apps as Apple software. Keep one canonical state owner and one native animation owner per interaction.
 
 ## Source and asset policy
 

@@ -4,16 +4,29 @@ LoomLogic UI is a Codex-friendly orchestration skill for designing, building, re
 
 The skill is deliberately modular: [the entrypoint](SKILL.md) contains shared priorities and routing, while detailed workflows and platform guidance live under [`references/`](references/).
 
-Its [Dynamic Interaction System](references/dynamic-interaction-system.md) adds a coherent engine for direct manipulation, interruptible springs, velocity and momentum, spatial/shared-element continuity, morphing components, scroll-linked behavior, adaptive motion, optical typography, depth, and synchronized feedback. It includes reusable Codex rules, LoomLogic Health and Northstone patterns, and an audit/refactor mode. The system borrows fluid-interface physics and design thinking without copying Apple styling or displacing the repository's Radix/shadcn base and vetted component sources.
+Its [Dynamic Interaction System](references/dynamic-interaction-system.md) adds coherent behavior for direct manipulation, interruptible springs, velocity and momentum, spatial/shared-element continuity, morphing components, scroll-linked behavior, adaptive motion, optical typography, depth, and synchronized feedback. It includes reusable Codex rules, LoomLogic Health and Northstone patterns, and an audit/refactor mode. The system borrows fluid-interface physics and design thinking without copying Apple styling or displacing the repository's Radix/shadcn base and vetted component sources.
+
+## Motion architecture
+
+The [motion engine policy](references/motion-engine-policy.md) is authoritative for runtime selection and ownership:
+
+- CSS handles simple web transitions.
+- `motion/react` is the default web product-motion engine.
+- View Transitions progressively enhance route/page continuity and never replace correct navigation, focus, history, or fallbacks.
+- GSAP is reserved for bounded complex, cinematic, timeline-heavy, or marketing sequences and never co-owns an interaction with Motion.
+- Expo/React Native uses Reanimated plus React Native Gesture Handler for continuous gesture-driven motion.
+- Native Apple targets use native SwiftUI, UIKit, and AppKit animation APIs. Motion and GSAP are web-only.
+
+[Motion tokens](references/motion-tokens.md) provide the shared feedback, quiet, spatial, physical, and expressive vocabulary. [Motion primitives](references/motion-primitives.md) define reusable behavioral contracts. Every interaction keeps one canonical state owner and one motion engine.
 
 ## Routing
 
 | Target | Guidance |
 | --- | --- |
-| Web | LoomLogic UI core plus the repository's web conventions and accessible Radix/shadcn-style primitives when present |
-| Expo / React Native | LoomLogic UI core plus the dedicated native-mobile reference |
+| Web | LoomLogic UI core plus repository conventions, accessible primitives, and the CSS → Motion → View Transitions/GSAP specialist hierarchy |
+| Expo / React Native | LoomLogic UI core plus the native-mobile reference and Reanimated/Gesture Handler for continuous gestures |
 | Expo / React Native with Appllama MCP available | The same build path, with optional pre-build reference research |
-| Native Apple | LoomLogic UI core plus the dedicated `references/apple/` layer for SwiftUI, UIKit, AppKit, and Mac Catalyst |
+| Native Apple | LoomLogic UI core plus the `references/apple/` layer and native system animation APIs for SwiftUI, UIKit, AppKit, and Mac Catalyst |
 | iPadOS | Its own resizable, multi-input, multiwindow adaptation profile—not a scaled iPhone layout |
 
 Appllama is optional and research-only. The skill works without its MCP, and its absence must never block design or implementation.
@@ -34,7 +47,7 @@ Research extracts patterns and interaction grammar. It never authorizes cloning 
 
 The [Native Apple reference layer](references/apple/) makes Apple platforms a full target beside Web and Expo/React Native. It covers separate iOS, iPadOS, and macOS profiles; cross-platform adaptation; navigation and presentation; windows and multitasking; menus and commands; touch, keyboard, pointer, focus, gestures, and drag and drop; Liquid Glass and standard materials; typography, semantic color, and SF Symbols; accessibility; interface writing and feedback; loading and progress; localization and right-to-left layouts; app icons and Icon Composer; official resources; and runtime verification.
 
-Native Apple guidance separates platform chrome from branded content. Standard Apple navigation, controls, commands, presentations, materials, focus, and accessibility behavior remain familiar, while LoomLogic identity stays strong in hierarchy, content, data visualization, product interactions, typography where appropriate, and restrained brand accents. The existing Dynamic Interaction System remains the motion and interaction-quality layer.
+Native Apple guidance separates platform chrome from branded content. Standard Apple navigation, controls, commands, presentations, materials, focus, animation APIs, and accessibility behavior remain familiar, while LoomLogic identity stays strong in hierarchy, content, data visualization, product interactions, typography where appropriate, and restrained brand accents. The Dynamic Interaction System informs behavior and interaction quality; it does not visually skin web apps as Apple software or replace native Apple frameworks.
 
 The repository links to current official Apple sources instead of copying Apple UI kits, templates, SF Symbols, Icon Composer output, or other proprietary assets. Date-sensitive work should recheck the live HIG, framework documentation, SDK availability, and Apple Design Resources.
 
