@@ -20,7 +20,11 @@ Resolve conflicts in this order:
 7. External component catalogs and inspiration sources.
 8. Generic design conventions.
 
-Existing project evidence always beats a catalog's defaults. If `LOOMLOGIC_UI.md` or `.loomlogic-ui/overrides.md` exists, treat it as a project-specific routing preference below `AGENTS.md` and the core design system; it may narrow sources or motion, but cannot silently weaken accessibility or contradict user instructions. The template is in [references/project-override-template.md](references/project-override-template.md).
+Existing project evidence always beats a catalog's defaults.
+
+At the start of substantial UI work, automatically look for `LOOMLOGIC_UI.md` and `.loomlogic-ui/overrides.md` from the repository root to the target package. Read the closest applicable file before choosing a visual direction, component source, or motion approach. Also inspect the paths it names plus the project's actual theme/token files, font setup, `components.json` or equivalent component registry, package manifest, and representative nearby UI. If generated design documentation disagrees with the implementation, treat the runtime token/component source as current and flag the stale document.
+
+These files are lightweight project overrides, not copies of this skill. They may specify local brand tokens, fonts, color roles, motion intensity, component preferences, verification commands, and intentional exceptions. They sit below user instructions, `AGENTS.md`, the core design system, and the actual codebase; they cannot silently weaken accessibility, authorize dependency changes, or override truthful product behavior. Prefer `.loomlogic-ui/overrides.md` for new repositories; keep supporting `LOOMLOGIC_UI.md` for existing ones. The template is in [references/project-override-template.md](references/project-override-template.md).
 
 ## Platform routing
 

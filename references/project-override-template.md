@@ -1,6 +1,6 @@
 # Project override template
 
-Copy the template below to `LOOMLOGIC_UI.md` at a repository root only when the project needs stable UI routing preferences beyond its existing `AGENTS.md` and `DESIGN.md`. Delete unused sections. Do not duplicate the whole design system here.
+Copy the template below to `.loomlogic-ui/overrides.md` at a repository root or package root only when the project needs stable UI routing preferences beyond its existing `AGENTS.md` and `DESIGN.md`. `LOOMLOGIC_UI.md` remains supported for existing repositories. Delete unused sections and point to authoritative files instead of duplicating the whole design system or pasting large token tables.
 
 ```markdown
 # LoomLogic UI project overrides
@@ -14,7 +14,10 @@ Copy the template below to `LOOMLOGIC_UI.md` at a repository root only when the 
 
 - Design system: [path]
 - Tokens/theme: [path]
+- Fonts/type scale: [path or font families]
+- Color roles: [path and brief semantic notes]
 - Canonical primitives: [path]
+- Component registry: [path, for example components.json]
 - Representative screens: [paths]
 
 ## Component-source policy
@@ -29,14 +32,19 @@ Copy the template below to `LOOMLOGIC_UI.md` at a repository root only when the 
 - Density: [compact / balanced / spacious]
 - Radius/shadow/material rules: [brief constraints]
 - Typography/iconography: [brief constraints]
+- Brand color usage: [brief semantic rules; keep exact values in the token source]
 - Prohibited motifs: [project-specific list]
 
 ## Motion policy
 
 - Existing motion stack: [library or CSS]
-- Motion budget: [quiet / moderate / expressive]
+- Motion intensity: [quiet / moderate / expressive]
 - Continuous/scroll motion: [policy]
 - Reduced-motion expectation: [project-specific behavior]
+
+## Exceptions
+
+- [path or surface]: [intentional exception and reason]
 
 ## Verification
 
