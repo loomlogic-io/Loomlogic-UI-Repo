@@ -40,6 +40,20 @@ The repository links to current official Apple sources instead of copying Apple 
 
 ## Install
 
+### TasteSkill v2
+
+TasteSkill v2 is bundled in full under [`vendor/taste-skill/`](vendor/taste-skill/), including its direction library, scripts, browser inspector, references, and base assets. LoomLogic UI reads that pinned copy directly, so an older global `design-taste-frontend` cannot supply the wrong version. Updating LoomLogic UI updates the bundle too; a separate TasteSkill installation is optional for standalone use.
+
+Read [the integration contract](references/tasteskill-v2.md) for commands, requirements, and how LoomLogic's brand and motion rules take precedence over upstream house-style defaults. The route remains limited to landing pages, portfolios, and expressive web redesigns. Dashboards, Expo/React Native, and native Apple flows retain their existing routes.
+
+The source revision and SHA-256 checksums are recorded in [`vendor/taste-skill/UPSTREAM.json`](vendor/taste-skill/UPSTREAM.json). All upstream files are preserved unchanged, with the upstream MIT license included. Validation checks bundle integrity and exercises direction drawing and lint behavior:
+
+```bash
+node scripts/validate-skill.mjs
+```
+
+### LoomLogic UI
+
 Install one user-wide canonical copy with the agent-skills CLI:
 
 ```bash

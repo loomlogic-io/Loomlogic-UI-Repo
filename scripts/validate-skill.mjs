@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import "./validate-tasteskill.mjs";
 
 const skill = fs.readFileSync("SKILL.md", "utf8");
 const frontmatter = skill.match(/^---\n([\s\S]*?)\n---\n/);
