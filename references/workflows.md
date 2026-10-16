@@ -50,11 +50,12 @@ Read only the section matching the current task. Shared source priority, adaptat
 ## Landing page or marketing surface
 
 1. Clarify audience, promise, proof, conversion action, content hierarchy, and available brand assets.
-2. Use `design-taste-frontend` or `impeccable` as the primary craft lens. Use 21st to explore/search when useful.
+2. Use bundled TasteSkill v2 or `impeccable` as the primary craft lens. For v2, read [the integration contract](tasteskill-v2.md), then [the bundled skill](../vendor/taste-skill/SKILL.md). Inventory the subject and real assets, write the argument, draw a direction with fixed brand palette/type, and build with real content. Use 21st to explore/search when useful.
 3. Select external effects only after the narrative and composition work without them.
 4. Aceternity or Magic UI can support expressive sections; Uiverse can support isolated controls; React Bits can support a restrained hero/background effect.
 5. Avoid a stitched-template page: repeated card grids, gradient text, glow everywhere, identical reveal animations, fake logos, and generic claims.
 6. Protect Core Web Vitals, readable contrast, responsive typography, asset quality, and immediate access to the primary CTA.
+7. With v2, lint the affected source, inspect at 1440/768/390px, review the screenshots, and fix the most consequential issues. Report measured defects separately from upstream taste findings and documented brand exceptions; do not add imagery or motion merely to meet a quota.
 
 ## Application dashboard
 

@@ -12,7 +12,7 @@ Read this reference when selecting design skills, catalogs, or motion tools. Ava
 | `21st-ai` | Generating and iterating on 21st variants when the user wants that workflow | Routine hand-built changes when a direction is already clear |
 | `21st-cli-use` | Searching, inspecting, or installing 21st catalog components and themes | Replacing working project primitives without a reason |
 | `impeccable` | Holistic UI craft across product and marketing surfaces | Backend-only work; skipping its required context setup |
-| `design-taste-frontend` | Distinctive landing pages, portfolios, and expressive redesigns | Dashboards, tables, and multi-step product workflows |
+| Bundled TasteSkill v2 (`design-taste-frontend`) | Distinctive landing pages, portfolios, and expressive web redesigns; read [the integration contract](tasteskill-v2.md), then [the bundled skill](../vendor/taste-skill/SKILL.md) | Dashboards, tables, multi-step product workflows, Expo/React Native, and native Apple screens |
 | `prototype` | Isolated, user-selectable UI variants | Production changes before the user selects a winner |
 
 Do not stack `21st-ui-build`, `impeccable`, and `design-taste-frontend` by default. Choose the primary craft workflow whose scope best matches the task, then add narrow specialists only when needed.
